@@ -19,10 +19,14 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "materialize-css": "^0.100.1",
     "mongodb": "*",
     "mongoose": "*",
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*"
+  },
+  "devDependencies": {
+    "ember-cli-materialize": "^0.22.0-beta.0"
   }
 }
