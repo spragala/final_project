@@ -39,3 +39,11 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+/************
+* VIEWS    *
+************/
+
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs({ defaultLayout: 'layout' }));
+app.set('view engine', 'handlebars');
