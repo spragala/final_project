@@ -10,6 +10,11 @@ var app = express();
 
 //var admin = express(); TODO - create Admin pg
 
+// Set Port
+app.listen(process.env.PORT || 3000, function () {
+  console.log('Server started on port: http://localhost:3000/');
+});
+
 /************
 * DATABASE  *
 ************/
@@ -50,11 +55,15 @@ app.use(session({
     resave: true
 }));
 
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Express Validator - from: https://github.com/ctavan/express-validator
 app.use(expressValidator({
   errorFormatter: function (param, msg, value) {
     var namespace = param.split('.');
-    var root    = namespace.shift();
+    var root = namespace.shift();
     var formParam = root;
 
     while (namespace.length) {
@@ -85,6 +94,9 @@ app.use(function (req, res, next) {
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+app.use('/', routes);
+app.use('/users', users);
 
 /************
 * VIEWS    *
