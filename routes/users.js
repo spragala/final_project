@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
 
 // Signup
 router.get('/signup', function (req, res) {
@@ -32,9 +33,22 @@ router.post('/signup', function (req, res) {
       errors: errors
     });
   } else {
-    console.log('No');
-  }
+    var newUser = new User({
+      name: name,
+      email: email,
+      username: username,
+      password: password
+    });
 
-});
+    User.createUser(newUser, function (err, user) {
+      if (err) throw err;
+      console.log(user)
+    });
+
+    req.flash('success_msg', 'You have successfully created an account, please login.');
+
+    res.redirect('/users/login')
+  }
+}); // <- router.post
 
 module.exports = router;
