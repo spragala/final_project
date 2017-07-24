@@ -8,8 +8,11 @@ router.get('/', function (req, res) {
 
 // Get Homepage
 router.get('/profile', checkAuth, function (req, res) {
-  res.render('profile');
-  console.log(req.user.username);
+  res.render('profile', {
+    username: req.user.username,
+    name: req.user.name
+  });
+
 });
 
 function checkAuth(req, res, next) {
