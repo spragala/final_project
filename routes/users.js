@@ -18,7 +18,23 @@ router.post('/signup', function (req, res) {
   var password = req.body.password;
   var password2 = req.body.password2;
 
-  console.log(name)
+  // Validations
+  req.checkBody('name', 'Name is required').notEmpty();
+  req.checkBody('email', 'Email address is required').notEmpty();
+  req.checkBody('email', 'Email address is not vaild').isEmail();
+  req.checkBody('username', 'Username is required').notEmpty();
+  req.checkBody('password', 'A password is required').notEmpty();
+  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+
+  var errors = req.validationErrors();
+  if (errors) {
+    res.render('signup', {
+      errors: errors
+    });
+  } else {
+    console.log('No');
+  }
+
 });
 
 module.exports = router;

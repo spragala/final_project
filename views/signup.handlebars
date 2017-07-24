@@ -1,3 +1,13 @@
+<h2 class="page-header"> Create an Account </h2>
+{{#if errors}}
+    {{#each errors}}
+    <div class="chip">
+      {{msg}}
+      <i class="close material-icons">close</i>
+    </div>
+    {{/each}}
+{{/if}}
+
 <div class="row">
   <form class="col s6 offset-s3" method="post" action="/users/signup">
     <div class="row">
