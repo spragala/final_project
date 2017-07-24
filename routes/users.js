@@ -9,11 +9,6 @@ router.get('/signup', function (req, res) {
   res.render('signup');
 });
 
-// Login
-router.get('/login', function (req, res) {
-  res.render('login');
-});
-
 router.post('/signup', function (req, res) {
   var name = req.body.name;
   var email = req.body.email;
@@ -85,9 +80,14 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
+// Login
+router.get('/login', function (req, res) {
+  res.render('login');
+});
+
 router.post('/login',
   passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/users/profile',
     failureRedirect: '/users/login',
     failureFlash: true
   }),
@@ -95,6 +95,7 @@ router.post('/login',
     res.redirect('/');
   });
 
+// Logout
 router.get('/logout', function (req, res) {
   req.logout();
   req.flash('success_msg', 'You have successfully logged out');
