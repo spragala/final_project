@@ -1,3 +1,57 @@
 .index-text {
+  display: flex;
+}
+
+.users-index {
+  flex: 1;
+}
+
+.calendar {
+  flex: 2;
   text-align: center;
+}
+
+h1.flow-text {
+  text-align: center;
+}
+
+div.section {
+  padding: 0;
+}
+
+.parallax img {
+  width: 100%;
+}
+
+.heading {
+  z-index: 999;
+  float: right;
+  margin-right: 30px;
+  color: #fff;
+  font-size: 40px;
+}
+
+.headshot img {
+  width: 60%;
+  text-align: center;
+}
+
+.row.container {
+  padding: 70px 0;
+  display: flex;
+  margin: auto;
+  width: 80%;
+}
+
+.headshot {
+  flex: 1;
+}
+
+.about-me-container {
+  flex: 2;
+  margin-left: -50px;
+}
+
+.header {
+  margin-top: 0;
 }
