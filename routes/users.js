@@ -9,11 +9,6 @@ router.get('/signup', function (req, res) {
   res.render('signup');
 });
 
-// Login
-router.get('/login', function (req, res) {
-  res.render('login');
-});
-
 router.post('/signup', function (req, res) {
   var name = req.body.name;
   var email = req.body.email;
@@ -39,7 +34,8 @@ router.post('/signup', function (req, res) {
       name: name,
       email: email,
       username: username,
-      password: password
+      password: password,
+      admin: false
     });
 
     User.createUser(newUser, function (err, user) {
@@ -85,9 +81,14 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
+// Login
+router.get('/login', function (req, res) {
+  res.render('login');
+});
+
 router.post('/login',
   passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/profile',
     failureRedirect: '/users/login',
     failureFlash: true
   }),
@@ -95,11 +96,12 @@ router.post('/login',
     res.redirect('/');
   });
 
+// Logout
 router.get('/logout', function (req, res) {
   req.logout();
   req.flash('success_msg', 'You have successfully logged out');
 
-  res.redirect('/users/login');
+  res.redirect('/');
 });
 
 module.exports = router;
