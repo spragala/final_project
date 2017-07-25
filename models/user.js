@@ -15,6 +15,9 @@ var UserSchema = new Schema({
   },
   name: {
     type: String
+  },
+  admin: {
+    type: Boolean
   }
 });
 
