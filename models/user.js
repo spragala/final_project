@@ -18,7 +18,10 @@ var UserSchema = new Schema({
   },
   admin: {
     type: Boolean
-  }
+  },
+  appointments: [{
+    type: Schema.Types.ObjectId, ref: 'Appointment'
+  }]
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);
