@@ -22,10 +22,11 @@ var UserSchema = new Schema({
   }
 });
 
-UserSchema.virtual("appointments", {
-  ref: "Appointment",
-  localField: "_id",    // find appointments where user._id ===
-  foreignField: "_user" // appointment._user
+// From Nathan - virtual insanity, "virtually" adding appointments to users
+UserSchema.virtual('appointments', {
+  ref: 'Appointment',
+  localField: '_id',    // find appointments where user._id ===
+  foreignField: '_user' // appointment._user
 })
 
 var User = module.exports = mongoose.model('User', UserSchema);
