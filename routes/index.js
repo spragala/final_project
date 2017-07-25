@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
 
 // Get Welcomepage
 router.get('/', function (req, res) {
@@ -17,11 +18,17 @@ router.get('/profile', checkAuth, function (req, res) {
 // Admin Dashboard
 router.get('/dashboard', checkAuth, function (req, res) {
   if (req.user.admin === true) {
-    res.render('dashboard');
+    User.find({}).exec(function (err, allUsers) {
+      if (err) throw err;
+      res.render('dashboard', {
+        users: allUsers
+      });
+    });
   } else {
     req.flash('error_msg', 'You are not authorized');
     res.redirect('/');
   }
+
 });
 
 function checkAuth(req, res, next) {

@@ -1,1 +1,9 @@
-DASHBOARD
+<div class="row">
+  <div class="col s6 offset-s3 index-text">
+    <span class="flow-text">DASHBOARD</span>
+    {{#each users}}
+      <p> {{this.name}} </p>
+      <p> {{this.email}} </p>
+    {{/each}}
+  </div>
+</div>
