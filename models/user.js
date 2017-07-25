@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var Schema = mongoose.Schema;
+var Appointment = require('../models/appointment');
 
 var UserSchema = new Schema({
   username: {
@@ -18,11 +19,14 @@ var UserSchema = new Schema({
   },
   admin: {
     type: Boolean
-  },
-  appointments: [{
-    type: Schema.Types.ObjectId, ref: 'Appointment'
-  }]
+  }
 });
+
+UserSchema.virtual("appointments", {
+  ref: "Appointment",
+  localField: "_id",    // find appointments where user._id ===
+  foreignField: "_user" // appointment._user
+})
 
 var User = module.exports = mongoose.model('User', UserSchema);
 

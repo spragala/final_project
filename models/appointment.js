@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var AppointmentSchema = new Schema({
-  _creator: {
-    type: Number, ref: 'User', required: true
+  _user: {
+    type: Schema.Types.ObjectId, ref: 'User', required: true
   },
   title: {
     type: String

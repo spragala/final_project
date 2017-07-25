@@ -19,11 +19,7 @@ app.listen(process.env.PORT || 3000, function () {
 * DATABASE  *
 ************/
 
-var mongo = require('mongodb');
-var mongoose = require('mongoose');
-var db = mongoose.connection;
-
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/wdi_final_project');
+var db = require("./models"); // index.js
 
 /************
 * MIDDLEWARE *

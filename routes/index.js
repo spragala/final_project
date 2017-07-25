@@ -19,7 +19,7 @@ router.get('/profile', checkAuth, function (req, res) {
 // Admin Dashboard
 router.get('/dashboard', checkAuth, function (req, res) {
   if (req.user.admin === true) {
-    User.find({}).exec(function (err, allUsers) {
+    User.find({}).populate('appointments').exec(function (err, allUsers) {
       if (err) throw err;
       res.render('dashboard', {
         users: allUsers
