@@ -14,9 +14,9 @@ router.get('/profile', checkAuth, function (req, res) {
   .populate('appointments')
   .exec(function (err, user) {
     res.render('profile', {
-      username: user.username,
-      name: user.name,
-      appointments: user.appointments
+      username: req.user.username,
+      name: req.user.name,
+      appointments: req.user.appointments
     });
   });
 });
@@ -32,7 +32,11 @@ router.post('/new_appointment', function (req, res) {
   var location = req.body.location;
   var notes = req.body.notes;
   var _user = req.body._user;
-  var time = req.body.date;
+  var hour = req.body.hour;
+  var date = req.body.date;
+
+  var newHour = hour.slice(0, 5) + ' ' + hour.slice(5, 7);
+  var time = date + ' ' + newHour;
 
   var newAppointment = new Appointment({
     _user: _user,
@@ -41,9 +45,10 @@ router.post('/new_appointment', function (req, res) {
     notes: notes,
     time: time
   });
+  console.log(newAppointment);
   newAppointment.save(function (err, appointment) {
     if (err) throw err;
-    res.json(appointment);
+    res.redirect('/dashboard');
   });
 });
 

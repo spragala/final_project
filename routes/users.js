@@ -105,7 +105,7 @@ router.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
-
+// Admin User - profile pages
 router.get('/:id', checkAuth, function (req, res) {
   User.findById(req.params.id)
   .populate('appointments')
