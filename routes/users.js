@@ -104,16 +104,20 @@ router.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
-// note: this checkAuth is not actually making sure only Katie can see it
-router.get('/:id', checkAuth, function(req, res) {
-  User.findOne(req.params.id, function(err, user) {
-    res.render('profile', {
-      username: user.username,
-      name: user.name,
-      _id: user._id,
-    });
-  })
-})
+router.get('/:id', checkAuth, function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    if (req.user.admin === true) {
+      res.render('profile', {
+        username: user.username,
+        name: user.name,
+        id: user.id,
+      });
+    } else {
+      req.flash('error_msg', 'You are not authorized');
+      res.redirect('/');
+    }
+  });
+});
 
 function checkAuth(req, res, next) {
   if (req.isAuthenticated()) {

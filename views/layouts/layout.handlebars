@@ -24,6 +24,7 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           {{#if user}}
+            <li><p> Hi {{user.username}} </p></li>
             <li><a href="/">Home</a></li>
             <li><a href="/users/logout">Logout</a></li>
           {{else}}

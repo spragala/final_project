@@ -28,16 +28,14 @@ router.post('/new_appointment', function (req, res) {
   var notes = req.body.notes;
   var _user = req.body._user;
   var time = req.body.date;
-  var apptData = {
+
+  var newAppointment = new Appointment({
     _user: _user,
     title: title,
     location: location,
     notes: notes,
     time: time
-  };
-  console.log(apptData); 
-  var newAppointment = new Appointment(apptData);
-  console.log(newAppointment)
+  });
   newAppointment.save(function (err, appointment) {
     if (err) throw err;
     res.json(appointment);
