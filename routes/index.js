@@ -10,9 +10,40 @@ router.get('/', function (req, res) {
 
 // Get Homepage
 router.get('/profile', checkAuth, function (req, res) {
-  res.render('profile', {
-    username: req.user.username,
-    name: req.user.name
+  User.findOne({})
+  .populate('appointments')
+  .exec(function (err, user) {
+    res.render('profile', {
+      username: user.username,
+      name: user.name,
+      appointments: user.appointments
+    });
+  });
+});
+
+// Get new appointment
+router.get('/new_appointment', function (req, res) {
+  res.render('new_appointment');
+});
+
+// Create an appointment for a User
+router.post('/new_appointment', function (req, res) {
+  var title = req.body.title;
+  var location = req.body.location;
+  var notes = req.body.notes;
+  var _user = req.body._user;
+  var time = req.body.date;
+
+  var newAppointment = new Appointment({
+    _user: _user,
+    title: title,
+    location: location,
+    notes: notes,
+    time: time
+  });
+  newAppointment.save(function (err, appointment) {
+    if (err) throw err;
+    res.json(appointment);
   });
 });
 

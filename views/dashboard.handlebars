@@ -9,7 +9,9 @@
             <i class="material-icons circle">folder</i>
             <span class="title">{{name}}</span>
             <p>{{email}} <br>
-            <p>Appointments:{{appointments}}</p>
+              {{#each appointments}}
+              <p> Appointments: {{title}}{{date}}{{location}} </p>
+              {{/each}}
                Balance: $0.00
             </p>
             <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>

@@ -48,6 +48,7 @@ router.post('/signup', function (req, res) {
   }
 }); // <- router.post
 
+// Passport Strategy
 passport.use(new LocalStrategy(
   function (username, password, done) {
     User.getUserByUsername(username, function (err, user) {
@@ -103,5 +104,33 @@ router.get('/logout', function (req, res) {
 
   res.redirect('/');
 });
+
+
+router.get('/:id', checkAuth, function (req, res) {
+  User.findById(req.params.id)
+  .populate('appointments')
+  .exec(function (err, user) {
+    if (req.user.admin === true) {
+      res.render('profile', {
+        username: user.username,
+        name: user.name,
+        id: user.id,
+        appointments: user.appointments
+      });
+    } else {
+      req.flash('error_msg', 'You are not authorized');
+      res.redirect('/');
+    }
+  });
+});
+
+function checkAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    req.flash('error_msg', 'You are not logged in');
+    res.redirect('/users/login');
+  }
+}
 
 module.exports = router;
