@@ -28,5 +28,8 @@ $(document).ready(function () {
 
 
   $('select').material_select();
+  $('#client-select').on('change', function () {
+      $('#client-id').val($('#client-select').val());
+    });
 
 }); // End doc.ready
