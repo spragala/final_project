@@ -52,13 +52,27 @@ router.post('/new_appointment', function (req, res) {
   });
 });
 
+DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 // Admin Dashboard
 router.get('/dashboard', checkAuth, function (req, res) {
   if (req.user.admin === true) {
     User.find({}).populate('appointments').exec(function (err, allUsers) {
       if (err) throw err;
+      console.log(allUsers);
+      people = allUsers.map(function (user) {
+        console.log(user.appointments);
+        user.times = user.appointments.map(function (x) {
+          newTime = `${DAYS[x.time.getDay()]} at ${x.time.toTimeString()}`;
+          return {title: x.title, location: x.location, time: newTime};
+        }
+      );
+        console.log(user.times);
+        return user;
+      }
+    );
+      console.log(people);
       res.render('dashboard', {
-        users: allUsers
+        users: people,
       });
     });
   } else {

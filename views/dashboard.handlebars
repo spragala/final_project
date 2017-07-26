@@ -10,9 +10,9 @@
             <span class="title">{{name}}</span>
             <br>
               <div class="appointment-block">
-                {{#each appointments}}
+                {{#each times}}
                 <p> Next Appointment: <br><strong>{{title}}</strong></p>
-                <p>Time: {{time}} </p><br>
+                <p id="time">Time: {{time}} </p>
                 <p>Location: {{location}} </p>
                 {{/each}}
               </div>
