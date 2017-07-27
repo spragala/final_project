@@ -23,26 +23,32 @@
         <a href="/" class="brand-logo">Catherine Sprague, LCSW</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
+          <li><a href="/about_me">About me</a></li>
+          <li><a href="/pyscotherapy">Pyscotherapy</a></li>
+          <li><a href="/contact">Contact</a></li>
           {{#if user}}
-            <li><p> Hi {{user.username}} </p></li>
-            <li><a href="/">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
             <li><a href="/users/logout">Logout</a></li>
           {{else}}
-            <li><a href="/users/login">Login</a></li>
-            <li><a href="/users/signup">Sign up</a></li>
+            <li><a class="waves-effect waves-light btn" href="/users/login">Login</a></li>
           {{/if}}
         </ul>
         <ul class="side-nav" id="mobile-demo">
-          <li><a href="/users/login">Login</a></li>
-          <li><a href="/users/signup">Sign up</a></li>
-          <li><a href="/">Home</a></li>
-          <li><a href="/users/logout">Logout</a></li>
+          <li><a href="/about_me">About me</a></li>
+          <li><a href="/pyscotherapy">Pyscotherapy</a></li>
+          <li><a href="/contact">Contact</a></li>
+          {{#if user}}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/users/logout">Logout</a></li>
+          {{else}}
+            <li><a href="/users/login">Login</a></li>
+          {{/if}}
         </ul>
       </div>
     </nav>
 
     <!-- Body -->
-    <div class="section">
+    <div class="body-section">
 
       <!-- Errors -->
       {{#if success_msg}}
@@ -59,15 +65,12 @@
 
       {{{ body }}}
     </div>
-    <div class="divider"></div>
 
     <!-- Footer -->
     <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
           </div>
           <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Links</h5>

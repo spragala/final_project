@@ -1,3 +1,29 @@
+
+/* Navbar */
+/*====================================================*/
+.brand-logo {
+  margin-left: 20px;
+  font-weight: 200;
+}
+
+a.brand-logo {
+  color: #ee6e73;
+}
+
+.nav-wrapper {
+  background-color: #fff;
+}
+
+.right li a {
+  color: #ee6e73;
+}
+
+li a.btn {
+  color: #fff;
+}
+
+/* Dashboard */
+/*====================================================*/
 .index-text {
   display: flex;
 }
@@ -15,25 +41,40 @@ h1.flow-text {
   text-align: center;
 }
 
-div.section {
+/*Welcome Page*/
+/*=====================================================*/
+section {
   padding: 0;
 }
 
-.parallax img {
-  width: 100%;
+.welcome-bg-img {
+  height: 600px;
+  background: url('../images/flowers.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.7;
 }
 
 .heading {
-  z-index: 999;
   float: right;
   margin-right: 30px;
   color: #fff;
   font-size: 40px;
+  font-weight: 400;
+  position: relative;
+  z-index: 999;
 }
 
 .headshot img {
   width: 60%;
   text-align: center;
+}
+
+.text {
+  font-family: 'Open Sans', Helvetica;
+  font-size: 16px;
+  letter-spacing: .2px;
+  line-height: 1.5em;
+  color: #555;
 }
 
 .row.container {
@@ -53,5 +94,50 @@ div.section {
 }
 
 .header {
+  margin-top: 0;
+  font-weight: 200;
+}
+
+/*Profile Page*/
+/*=============================================*/
+
+.buffer {
+  height: 30px;
+}
+
+.profile-wrapper {
+  display: flex;
+  height: 80vh;
+}
+
+.left {
+  flex: 1;
+  padding: 20px;
+  background-color: #eee;
+  margin: 0 30px;
+}
+
+.right-side {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.personal-info-block {
+  flex: 1;
+}
+
+.bookshelf {
+  flex: 1;
+  border-top: 1px solid #666;
+}
+
+iframe {
+  border: 1px solid #666;
+  box-shadow: 0px 10px 10px -5px #666;
+}
+
+.personal-info-head {
   margin-top: 0;
 }

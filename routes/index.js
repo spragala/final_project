@@ -13,11 +13,12 @@ router.get('/profile', checkAuth, function (req, res) {
   User.findOne({})
   .populate('appointments')
   .exec(function (err, user) {
-    console.log(user.appointments)
+    if (err) throw err;
     res.render('profile', {
       username: req.user.username,
       name: req.user.name,
-      appointments: user.appointments
+      email: req.user.email,
+      appointments: user.appointments,
     });
   });
 });
@@ -46,7 +47,6 @@ router.post('/new_appointment', function (req, res) {
     notes: notes,
     time: time
   });
-  console.log(newAppointment);
   newAppointment.save(function (err, appointment) {
     if (err) throw err;
     res.redirect('/dashboard');
