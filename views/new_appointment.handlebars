@@ -1,1 +1,31 @@
-HELLO
+<div class="row">
+  <form class="col s6 offset-s3" method="post" action="/new_appointment">
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="title" type="text" class="validate">
+        <label for="title">Title</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="location" type="text" class="validate">
+        <label for="location">Location</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="notes" type="textarea" class="validate">
+        <label for="notes">Comments</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="time" type="date" class="validate">
+        <label for="time">Date and Time</label>
+      </div>
+    </div>
+    <input name="_user" type="hidden" value="597579f858e71e4777ec0bf2">
+    <button class="btn waves-effect waves-light" type="submit" >Submit
+    </button>
+  </form>
+</div>

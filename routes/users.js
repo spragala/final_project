@@ -105,7 +105,7 @@ router.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
-
+// Admin User - profile pages
 router.get('/:id', checkAuth, function (req, res) {
   User.findById(req.params.id)
   .populate('appointments')
@@ -114,13 +114,25 @@ router.get('/:id', checkAuth, function (req, res) {
       res.render('profile', {
         username: user.username,
         name: user.name,
+        email: user.email,
         id: user.id,
-        appointments: user.appointments
+        appointments: user.appointments,
       });
     } else {
       req.flash('error_msg', 'You are not authorized');
       res.redirect('/');
     }
+  });
+});
+
+router.post('/:id', checkAuth, function (req, res) {
+  var objForUpdate = {};
+
+  if (req.body.username) objForUpdate.username = req.body.username;
+  if (req.body.email) objForUpdate.email = req.body.email;
+  User.update({ _id: req.params.id }, objForUpdate, function (err) {
+    if (err) throw err;
+    res.redirect('/profile');
   });
 });
 

@@ -8,19 +8,71 @@
           <li class="collection-item avatar">
             <i class="material-icons circle">folder</i>
             <span class="title">{{name}}</span>
-            <p>{{email}} <br>
-              {{#each appointments}}
-              <p> Appointments: {{title}}{{date}}{{location}} </p>
-              {{/each}}
-               Balance: $0.00
-            </p>
+            <br>
+              <div class="appointment-block">
+                {{#each times}}
+                <p> Next Appointment: <br><strong>{{title}}</strong></p>
+                <p id="time">Time: {{time}} </p>
+                <p>Location: {{location}} </p>
+                {{#if notes}}
+                  <p>Notes: {{notes}} </p>
+                {{/if}}
+                {{/each}}
+              </div>
+               <p>Balance: $0.00</p>
             <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
           </li>
         {{/each}}
       </ul>
     </div>
     <div class="calendar">
-      INSERT CALENDAR HERE
+      <div class="row">
+        <form class="col s6 offset-s3" method="post" action="/new_appointment">
+          <div class="input-field col s12">
+          <select id="client-select">
+            <option value="" disabled selected>Choose the client</option>
+            {{#each users}}
+            <option value="{{_id}}">{{name}}</option>
+            {{/each}}
+          </select>
+          <!-- Hidden field to pass client id -->
+          <input name="_user" type="hidden" id="client-id">
+        </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="title" type="text" class="validate">
+              <label for="title">Title</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="location" type="text" class="validate">
+              <label for="location">Location</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea name="notes" id="text-area-new-apt" class="materialize-textarea"></textarea>
+              <label for="notes">Comments</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="date" type="text" class="datepicker">
+              <label for="date">Date</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="hour" type="text" class="timepicker">
+              <label for="hour">Time</label>
+            </div>
+          </div>
+          <button class="btn waves-effect waves-light" type="submit" >Submit
+          </button>
+        </form>
+      </div>
+
     </div>
   </div>
 </div>
