@@ -27,4 +27,14 @@ $(document).ready(function () {
     ampmclickable: true,
   });
 
+  $('.edit-button').on('click', function (e) {
+    console.log('clicked');
+    $show = $(e.target).prev('.visible');
+    console.log($show);
+    $show.hide();
+    $(e.target).next().show();
+  });
+
+  // TODO - code to return to text $('submit').on('submit', function (e){e.target.show ... but in reverse})
+
 }); // End doc.ready

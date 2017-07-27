@@ -11,12 +11,21 @@
             <br>
               <div class="appointment-block">
                 {{#each times}}
-                <p> Next Appointment: <br><strong>{{title}}</strong></p>
-                <p id="time">Time: {{time}} </p>
-                <p>Location: {{location}} </p>
-                {{#if notes}}
-                  <p>Notes: {{notes}} </p>
-                {{/if}}
+                <div class="visible">
+                  <p> Next Appointment: <br><strong>{{title}}</strong></p>
+                  <p id="time">Time: {{time}} </p>
+                  <p>Location: {{location}} </p>
+                  {{#if notes}}
+                    <p>Notes: {{notes}} </p>
+                  {{/if}}
+                </div>
+                <button class="edit-button">Edit</button>
+                <div class="not-visible">
+                  <form class="update-appointment" method="post" action="/appointments/:id">
+                    <input type="text" name="time" value="{{title}}"/>
+                    <input type="submit"/>
+                  </form>
+                </div>
                 {{/each}}
               </div>
                <p>Balance: $0.00</p>

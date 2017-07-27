@@ -10,7 +10,6 @@ router.get('/', function (req, res) {
 
 // Get Homepage
 router.get('/profile', checkAuth, function (req, res) {
-  console.log("IN /profile: ", req.user.username);
   User.findOne({ _id: req.user._id })
   .populate('appointments')
   .exec(function (err, user) {
@@ -48,13 +47,17 @@ router.post('/new_appointment', function (req, res) {
     title: title,
     location: location,
     notes: notes,
-    time: time
+    time: time,
   });
   newAppointment.save(function (err, appointment) {
     if (err) throw err;
     res.redirect('/dashboard');
   });
 }); // <- router.post
+
+router.post('/appointments/:id', function (req, res) {
+  console.log('Posted!')
+});
 
 DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 

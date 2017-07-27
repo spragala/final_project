@@ -24,6 +24,10 @@ li a.btn {
 
 /* Dashboard */
 /*====================================================*/
+.not-visible {
+  display: none;
+}
+
 .index-text {
   display: flex;
 }
