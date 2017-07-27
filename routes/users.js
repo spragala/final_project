@@ -126,12 +126,11 @@ router.get('/:id', checkAuth, function (req, res) {
 });
 
 router.post('/:id', checkAuth, function (req, res) {
-  console.log("IN update username: ", req.user.username);
-  console.log(req.body)
-  User.update({_id: req.params.id}, {
-    username: req.body.username,
-  }, function (err) {
-    console.log(err)
+  var objForUpdate = {};
+
+  if (req.body.username) objForUpdate.username = req.body.username;
+  if (req.body.email) objForUpdate.email = req.body.email;
+  User.update({ _id: req.params.id }, objForUpdate, function (err) {
     if (err) throw err;
     res.redirect('/profile');
   });
