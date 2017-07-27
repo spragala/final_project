@@ -14,6 +14,9 @@
                 <p> Next Appointment: <br><strong>{{title}}</strong></p>
                 <p id="time">Time: {{time}} </p>
                 <p>Location: {{location}} </p>
+                {{#if notes}}
+                  <p>Notes: {{notes}} </p>
+                {{/if}}
                 {{/each}}
               </div>
                <p>Balance: $0.00</p>

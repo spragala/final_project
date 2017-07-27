@@ -13,10 +13,11 @@ router.get('/profile', checkAuth, function (req, res) {
   User.findOne({})
   .populate('appointments')
   .exec(function (err, user) {
+    console.log(user.appointments)
     res.render('profile', {
       username: req.user.username,
       name: req.user.name,
-      appointments: req.user.appointments
+      appointments: user.appointments
     });
   });
 });
@@ -50,36 +51,33 @@ router.post('/new_appointment', function (req, res) {
     if (err) throw err;
     res.redirect('/dashboard');
   });
-});
+}); // <- router.post
 
-DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 // Admin Dashboard
 router.get('/dashboard', checkAuth, function (req, res) {
   if (req.user.admin === true) {
     User.find({}).populate('appointments').exec(function (err, allUsers) {
       if (err) throw err;
-      console.log(allUsers);
-      people = allUsers.map(function (user) {
-        console.log(user.appointments);
-        user.times = user.appointments.map(function (x) {
-          newTime = `${DAYS[x.time.getDay()]} at ${x.time.toTimeString()}`;
-          return {title: x.title, location: x.location, time: newTime};
+      // hattip to michelle
+      clients = allUsers.map(function (user) {
+        user.times = user.appointments.map(function (x) { // adding 'times' to users to change date into string
+          newTime = `${DAYS[x.time.getDay()]} at ${x.time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+          return { title: x.title, location: x.location, time: newTime };
         }
       );
-        console.log(user.times);
         return user;
       }
     );
-      console.log(people);
       res.render('dashboard', {
-        users: people,
+        users: clients,
       });
     });
   } else {
     req.flash('error_msg', 'You are not authorized');
     res.redirect('/');
   }
-
 });
 
 function checkAuth(req, res, next) {
