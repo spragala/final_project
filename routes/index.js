@@ -10,14 +10,17 @@ router.get('/', function (req, res) {
 
 // Get Homepage
 router.get('/profile', checkAuth, function (req, res) {
+  console.log("IN /profile: ", req.user.username);
   User.findOne({ _id: req.user._id })
   .populate('appointments')
   .exec(function (err, user) {
+    // need function to reformat user.appointments.time
     if (err) throw err;
     res.render('profile', {
       username: user.username,
       name: user.name,
       email: user.email,
+      id: user._id,
       appointments: user.appointments,
     });
   });

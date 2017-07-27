@@ -114,13 +114,26 @@ router.get('/:id', checkAuth, function (req, res) {
       res.render('profile', {
         username: user.username,
         name: user.name,
+        email: user.email,
         id: user.id,
-        appointments: user.appointments
+        appointments: user.appointments,
       });
     } else {
       req.flash('error_msg', 'You are not authorized');
       res.redirect('/');
     }
+  });
+});
+
+router.post('/:id', checkAuth, function (req, res) {
+  console.log("IN update username: ", req.user.username);
+  console.log(req.body)
+  User.update({_id: req.params.id}, {
+    username: req.body.username,
+  }, function (err) {
+    console.log(err)
+    if (err) throw err;
+    res.redirect('/profile');
   });
 });
 

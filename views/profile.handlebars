@@ -18,10 +18,25 @@
     <div class="personal-info-block">
       <h2 class="personal-info-head"> Personal Information</h2>
       <p> <strong>Name:</strong> {{name}} </p>
+      <p> <strong>Username:</strong> {{username}} </p>
       <p> <strong>Email:</strong> {{email}} </p>
     </div>
     <div class="bookshelf">
       <h5> Links for {{name}} </h5>
+    </div>
+    <div class="update">
+      <div class="row">
+        <form class="col s6 offset-s3" method="post" action="/users/{{id}}">
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="username" type="text" class="validate">
+              <label for="username">Username</label>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" >Submit
+            </button>
+          </div>
+        </form>
+        </div>
     </div>
   </div>
 </div>
