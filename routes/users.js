@@ -125,6 +125,7 @@ router.get('/:id', checkAuth, function (req, res) {
   });
 });
 
+// Update User info
 router.post('/:id', checkAuth, function (req, res) {
   var objForUpdate = {};
 
