@@ -27,7 +27,7 @@ router.post('/signup', function (req, res) {
   var errors = req.validationErrors();
   if (errors) {
     res.render('signup', {
-      errors: errors
+      errors: errors,
     });
   } else {
     var newUser = new User({
@@ -35,7 +35,7 @@ router.post('/signup', function (req, res) {
       email: email,
       username: username,
       password: password,
-      admin: false
+      admin: false,
     });
 
     User.createUser(newUser, function (err, user) {
@@ -55,7 +55,7 @@ passport.use(new LocalStrategy(
       if (err) throw err;
       if (!user) {
         return done(null, false, {
-          message: 'Unknown User'
+          message: 'Unknown User',
         });
       }
 
@@ -65,7 +65,7 @@ passport.use(new LocalStrategy(
           return done(null, user);
         } else {
           return done(null, false, {
-            message: 'Invalid password'
+            message: 'Invalid password',
           });
         }
       });
@@ -91,7 +91,7 @@ router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/profile',
     failureRedirect: '/users/login',
-    failureFlash: true
+    failureFlash: true,
   }),
   function (req, res) {
     res.redirect('/');

@@ -30,10 +30,11 @@
                     <input type="submit"/>
                   </form>
                 </div>
+                <button class="delete-button" data-id="{{id}}">Delete</button>
                 {{/each}}
               </div>
                <p>Balance: $0.00</p>
-            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            <a href="/users/{{id}}" class="secondary-content"><i class="material-icons">grade</i></a>
           </li>
         {{/each}}
       </ul>

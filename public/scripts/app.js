@@ -35,6 +35,11 @@ $(document).ready(function () {
     $(e.target).next().show();
   });
 
-  // TODO - code to return to text $('submit').on('submit', function (e){e.target.show ... but in reverse})
+  $('.delete-button').on('click', function (e) {
+      $.ajax({
+        method: 'DELETE',
+        url: '/appointments/' + $(this).attr('data-id'),
+      });
+    });
 
 }); // End doc.ready
