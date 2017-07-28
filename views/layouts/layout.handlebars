@@ -32,6 +32,9 @@
           {{else}}
             <li><a class="waves-effect waves-light btn" href="/users/login">Login</a></li>
           {{/if}}
+          {{#if user.admin}}
+            <li><a class="waves-effect waves-light btn" href="/dashboard">Dashboard</a></li>
+          {{/if}}
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="/about_me">About me</a></li>

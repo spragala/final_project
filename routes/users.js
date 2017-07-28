@@ -137,6 +137,16 @@ router.post('/:id', checkAuth, function (req, res) {
   });
 });
 
+router.post('/:id/links', checkAuth, function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) throw err;
+    console.log(req.body.links)
+    user.links.push(req.body.links);
+    user.save();
+    res.status(201).json(user);
+  });
+});
+
 function checkAuth(req, res, next) {
   if (req.isAuthenticated()) {
     return next();

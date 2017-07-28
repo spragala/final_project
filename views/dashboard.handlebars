@@ -1,6 +1,8 @@
 <div class="row">
   <h1 class="flow-text">DASHBOARD</h1>
   <div class="col s12 index-text">
+
+    <!-- Client List -->
     <div class="users-index">
       <ul class="collection with-header">
         <li class="collection-header"><h4>Clients</h4></li>
@@ -39,6 +41,8 @@
         {{/each}}
       </ul>
     </div>
+
+    <!-- New Appointment -->
     <div class="calendar">
       <div class="row">
         <form class="col s6 offset-s3" method="post" action="/new_appointment">
@@ -86,7 +90,30 @@
           </button>
         </form>
       </div>
+    </div> <!-- .new-appointment form -->
 
+    <div class="bookshelf">
+      <div class="row">
+        <form class="col s6 offset-s3" id="newLinkForm">
+          <div class="input-field col s12">
+          <select class="link-select" name="id">
+            <option value="" disabled>Add a link</option>
+            {{#each users}}
+            <option value="{{_id}}">{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="links" type="text" class="validate link-data">
+              <label for="links">Links</label>
+            </div>
+          </div>
+          <button class="btn waves-effect waves-light" type="submit" >Submit
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
-</div>
+
+  </div> <!-- .index-text -->
+</div> <!-- .row -->

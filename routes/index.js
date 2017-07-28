@@ -21,6 +21,7 @@ router.get('/profile', checkAuth, function (req, res) {
       email: user.email,
       id: user._id,
       appointments: user.appointments,
+      links: user.links,
     });
   });
 });

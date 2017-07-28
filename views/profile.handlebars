@@ -23,14 +23,14 @@
     </div>
     <div class="bookshelf">
       <h5> Links for {{name}} </h5>
-      {{#if user.admin}}
-      <p>Form</p>
-      <button class="edit-button">Edit</button>
-      <div class="not-visible">
-        <input type="textarea" name="notes" value="Hello"/>
-      </div>
-      {{/if}}
-      <p> Hello </p>
+      <ul class="link-list">
+        {{#each links}}
+          <li><a href="{{this}}">{{this}}</a></li>
+        {{/each}}
+      </ul>
+
+
+
     </div>
     <div class="update">
       <div class="row">

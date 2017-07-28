@@ -39,7 +39,23 @@ $(document).ready(function () {
       $.ajax({
         method: 'DELETE',
         url: '/appointments/' + $(this).attr('data-id'),
+        // TODO success: onSuccess - render page
       });
     });
+
+  $('#newLinkForm').on('submit', function (e) {
+    e.preventDefault();
+    console.log($(this).serializeArray());
+    $.ajax({
+      method: 'POST',
+      url: '/users/' + $('select.link-select').val() + '/links',
+      data: $(this).serializeArray(),
+      success: newLinkSuccess,
+    });
+  });
+
+  function newLinkSuccess(json) {
+    console.log('Success!');
+  }
 
 }); // End doc.ready
