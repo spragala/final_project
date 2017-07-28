@@ -39,7 +39,7 @@ $(document).ready(function () {
       $.ajax({
         method: 'DELETE',
         url: '/appointments/' + $(this).attr('data-id'),
-        // TODO success: onSuccess - render page
+        success: deleteSuccess,
       });
     });
 
@@ -56,6 +56,11 @@ $(document).ready(function () {
 
   function newLinkSuccess(json) {
     console.log('Success!');
+    $('#newLinkForm input').val('');
+  }
+
+  function deleteSuccess() {
+    location.reload(true);
   }
 
 }); // End doc.ready

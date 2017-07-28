@@ -33,6 +33,7 @@ router.get('/profile', checkAuth, function (req, res) {
 
 // Create an appointment for a User
 router.post('/new_appointment', function (req, res) {
+  console.log(req.body)
   var title = req.body.title;
   var location = req.body.location;
   var notes = req.body.notes;
@@ -76,12 +77,13 @@ router.post('/appointments/:id', function (req, res) {
   });
 });
 
+// Delete an appointment
 router.delete('/appointments/:id', function (req, res) {
   Appointment.findById(req.params.id, function (err, appointment) {
     if (err) throw err;
-    appointment.remove(function (err) {
+    appointment.remove(function (err, deletedAppt) {
       if (err) throw err;
-      res.redirect('/dashboard');
+      res.status(201).json(deletedAppt);
     });
   });
 });

@@ -25,7 +25,8 @@
       <h5> Links for {{name}} </h5>
       <ul class="link-list">
         {{#each links}}
-          <li><a href="{{this}}">{{this}}</a></li>
+          <li>{{@index}}<a href="{{this}}">{{this}}</a></li>
+          <hr>
         {{/each}}
       </ul>
 

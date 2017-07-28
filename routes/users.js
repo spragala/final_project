@@ -117,6 +117,7 @@ router.get('/:id', checkAuth, function (req, res) {
         email: user.email,
         id: user.id,
         appointments: user.appointments,
+        links: user.links,
       });
     } else {
       req.flash('error_msg', 'You are not authorized');
@@ -137,15 +138,18 @@ router.post('/:id', checkAuth, function (req, res) {
   });
 });
 
+// Add a link
 router.post('/:id/links', checkAuth, function (req, res) {
   User.findById(req.params.id, function (err, user) {
     if (err) throw err;
-    console.log(req.body.links)
     user.links.push(req.body.links);
     user.save();
     res.status(201).json(user);
   });
 });
+
+//  delete a link
+router.delete('/:id/links/')
 
 function checkAuth(req, res, next) {
   if (req.isAuthenticated()) {
