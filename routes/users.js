@@ -27,7 +27,7 @@ router.post('/signup', function (req, res) {
   var errors = req.validationErrors();
   if (errors) {
     res.render('signup', {
-      errors: errors
+      errors: errors,
     });
   } else {
     var newUser = new User({
@@ -35,7 +35,7 @@ router.post('/signup', function (req, res) {
       email: email,
       username: username,
       password: password,
-      admin: false
+      admin: false,
     });
 
     User.createUser(newUser, function (err, user) {
@@ -55,7 +55,7 @@ passport.use(new LocalStrategy(
       if (err) throw err;
       if (!user) {
         return done(null, false, {
-          message: 'Unknown User'
+          message: 'Unknown User',
         });
       }
 
@@ -65,7 +65,7 @@ passport.use(new LocalStrategy(
           return done(null, user);
         } else {
           return done(null, false, {
-            message: 'Invalid password'
+            message: 'Invalid password',
           });
         }
       });
@@ -91,7 +91,7 @@ router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/profile',
     failureRedirect: '/users/login',
-    failureFlash: true
+    failureFlash: true,
   }),
   function (req, res) {
     res.redirect('/');
@@ -117,6 +117,7 @@ router.get('/:id', checkAuth, function (req, res) {
         email: user.email,
         id: user.id,
         appointments: user.appointments,
+        links: user.links,
       });
     } else {
       req.flash('error_msg', 'You are not authorized');
@@ -133,6 +134,26 @@ router.post('/:id', checkAuth, function (req, res) {
   if (req.body.email) objForUpdate.email = req.body.email;
   User.update({ _id: req.params.id }, objForUpdate, function (err) {
     if (err) throw err;
+    res.redirect('/profile');
+  });
+});
+
+// Add a link
+router.post('/:id/links', checkAuth, function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) throw err;
+    user.links.push(req.body.links);
+    user.save();
+    res.status(201).json(user);
+  });
+});
+
+//  delete a link
+router.post('/:id/links/:index', function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) throw err;
+    user.links.splice(req.params.index, 1);
+    user.save();
     res.redirect('/profile');
   });
 });

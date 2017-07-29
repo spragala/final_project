@@ -35,6 +35,32 @@ $(document).ready(function () {
     $(e.target).next().show();
   });
 
-  // TODO - code to return to text $('submit').on('submit', function (e){e.target.show ... but in reverse})
+  $('.delete-button').on('click', function (e) {
+      $.ajax({
+        method: 'DELETE',
+        url: '/appointments/' + $(this).attr('data-id'),
+        success: deleteSuccess,
+      });
+    });
+
+  $('#newLinkForm').on('submit', function (e) {
+    e.preventDefault();
+    console.log($(this).serializeArray());
+    $.ajax({
+      method: 'POST',
+      url: '/users/' + $('select.link-select').val() + '/links',
+      data: $(this).serializeArray(),
+      success: newLinkSuccess,
+    });
+  });
+
+  function newLinkSuccess(json) {
+    console.log('Success!');
+    $('#newLinkForm input').val('');
+  }
+
+  function deleteSuccess() {
+    location.reload(true);
+  }
 
 }); // End doc.ready

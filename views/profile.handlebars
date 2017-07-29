@@ -23,6 +23,18 @@
     </div>
     <div class="bookshelf">
       <h5> Links for {{name}} </h5>
+      <ul class="link-list">
+        {{#each links}}
+          <li><a href="{{this}}">{{this}}</a></li>
+          <form method="post" action="users/{{../id}}/links/{{@index}}">
+            <button class="delete-link"> Delete</button>
+          </form>
+          <hr>
+        {{/each}}
+      </ul>
+
+
+
     </div>
     <div class="update">
       <div class="row">

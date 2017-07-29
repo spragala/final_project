@@ -6,28 +6,29 @@ var Appointment = require('../models/appointment');
 var UserSchema = new Schema({
   username: {
     type: String,
-    index: true
+    index: true,
   },
   password: {
-    type: String
+    type: String,
   },
   email: {
-    type: String
+    type: String,
   },
   name: {
-    type: String
+    type: String,
   },
   admin: {
-    type: Boolean
-  }
+    type: Boolean,
+  },
+  links: [String],
 });
 
 // From Nathan - virtual insanity, "virtually" adding appointments to users
 UserSchema.virtual('appointments', {
   ref: 'Appointment',
   localField: '_id',    // find appointments where user._id ===
-  foreignField: '_user' // appointment._user
-})
+  foreignField: '_user', // appointment._user
+});
 
 var User = module.exports = mongoose.model('User', UserSchema);
 
@@ -44,7 +45,7 @@ module.exports.createUser = function (newUser, callback) {
 
 module.exports.getUserByUsername = function (username, callback) {
   var query = {
-    username: username
+    username: username,
   };
   User.findOne(query, callback);
 };
