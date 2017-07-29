@@ -26,7 +26,7 @@
       <ul class="link-list">
         {{#each links}}
           <li><a href="{{this}}">{{this}}</a></li>
-          <form method="delete" action="users/{{../id}}/links">
+          <form method="post" action="users/{{../id}}/links/{{@index}}">
             <button class="delete-link"> Delete</button>
           </form>
           <hr>

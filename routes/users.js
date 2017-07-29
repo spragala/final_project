@@ -149,13 +149,12 @@ router.post('/:id/links', checkAuth, function (req, res) {
 });
 
 //  delete a link
-router.delete('/:id/links', function (req, res) {
+router.post('/:id/links/:index', function (req, res) {
   User.findById(req.params.id, function (err, user) {
     if (err) throw err;
-    user.links.remove(function (err, deletedLink) {
-      if (err) throw err;
-      res.render('/profile');
-    });
+    console.log(req.params.index)
+    user.links.splice(req.params.index, 1);
+    user.save();
   });
 });
 
