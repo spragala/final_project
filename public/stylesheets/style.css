@@ -10,16 +10,21 @@ a.brand-logo {
   color: #ee6e73;
 }
 
-.nav-wrapper {
+nav .nav-wrapper {
   background-color: #fff;
 }
 
 .right li a {
   color: #ee6e73;
+  letter-spacing: .04em;
 }
 
 li a.btn {
   color: #fff;
+}
+
+.button-collapse {
+  color: #ee6e73;
 }
 
 /* Dashboard */
@@ -47,38 +52,10 @@ h1.flow-text {
 
 /*Welcome Page*/
 /*=====================================================*/
+
+/*layout*/
 section {
   padding: 0;
-}
-
-.welcome-bg-img {
-  height: 600px;
-  background: url('../images/flowers.jpg') no-repeat center center;
-  background-size: cover;
-  opacity: 0.7;
-}
-
-.heading {
-  float: right;
-  margin-right: 30px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: 400;
-  position: relative;
-  z-index: 999;
-}
-
-.headshot img {
-  width: 60%;
-  text-align: center;
-}
-
-.text {
-  font-family: 'Open Sans', Helvetica;
-  font-size: 16px;
-  letter-spacing: .2px;
-  line-height: 1.5em;
-  color: #555;
 }
 
 .row.container {
@@ -97,10 +74,48 @@ section {
   margin-left: -50px;
 }
 
+/*styles*/
+
+.welcome-bg-img {
+  height: 500px;
+  background: url('../images/flowers.jpg') no-repeat;
+  background-position: 0% 10%;
+  background-size: cover;
+  opacity: 0.7;
+}
+
+.heading-text {
+  text-align: center;
+  position: relative;
+  margin: 0;
+  top: 30px;
+  color: #fff;
+  font-size: 50px;
+  letter-spacing: .04em;
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.headshot img {
+  width: 60%;
+  text-align: center;
+}
+
 .header {
   margin-top: 0;
   font-weight: 200;
+  color: #737784;
 }
+
+.text {
+  font-family: 'Open Sans', Helvetica;
+  font-size: 16px;
+  letter-spacing: .4px;
+  line-height: 1.5em;
+  color: #737784;
+}
+
+
 
 /*Profile Page*/
 /*=============================================*/
