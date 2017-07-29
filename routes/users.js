@@ -152,9 +152,9 @@ router.post('/:id/links', checkAuth, function (req, res) {
 router.post('/:id/links/:index', function (req, res) {
   User.findById(req.params.id, function (err, user) {
     if (err) throw err;
-    console.log(req.params.index)
     user.links.splice(req.params.index, 1);
     user.save();
+    res.redirect('/profile');
   });
 });
 
