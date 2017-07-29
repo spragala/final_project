@@ -149,7 +149,15 @@ router.post('/:id/links', checkAuth, function (req, res) {
 });
 
 //  delete a link
-router.delete('/:id/links/')
+router.delete('/:id/links', function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) throw err;
+    user.links.remove(function (err, deletedLink) {
+      if (err) throw err;
+      res.render('/profile');
+    });
+  });
+});
 
 function checkAuth(req, res, next) {
   if (req.isAuthenticated()) {

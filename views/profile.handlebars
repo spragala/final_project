@@ -25,7 +25,10 @@
       <h5> Links for {{name}} </h5>
       <ul class="link-list">
         {{#each links}}
-          <li>{{@index}}<a href="{{this}}">{{this}}</a></li>
+          <li><a href="{{this}}">{{this}}</a></li>
+          <form method="delete" action="users/{{../id}}/links">
+            <button class="delete-link"> Delete</button>
+          </form>
           <hr>
         {{/each}}
       </ul>

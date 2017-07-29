@@ -15,11 +15,9 @@
                 {{#each times}}
                 <div class="visible">
                   <p> Next Appointment: <br><strong>{{title}}</strong></p>
-                  <p id="time">Time: {{time}} </p>
+                  <p id="time"> Time: {{time}} </p>
                   <p>Location: {{location}} </p>
-                  {{#if notes}}
-                    <p>Notes: {{notes}} </p>
-                  {{/if}}
+                  <p>Notes: {{notes}} </p>
                 </div>
                 <button class="edit-button">Edit</button>
                 <div class="not-visible">

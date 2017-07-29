@@ -26,14 +26,8 @@ router.get('/profile', checkAuth, function (req, res) {
   });
 });
 
-// Get new appointment
-// router.get('/new_appointment', function (req, res) {
-//   res.render('new_appointment');
-// });
-
 // Create an appointment for a User
 router.post('/new_appointment', function (req, res) {
-  console.log(req.body)
   var title = req.body.title;
   var location = req.body.location;
   var notes = req.body.notes;
