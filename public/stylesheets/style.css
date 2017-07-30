@@ -31,9 +31,6 @@ li a.btn {
 
 /* Dashboard */
 /*====================================================*/
-.not-visible {
-  display: none;
-}
 
 .dash-header {
   padding: 20px;
@@ -43,6 +40,10 @@ li a.btn {
 .flow-text {
   display: inline;
   padding: 10px 0;
+}
+
+h1.flow-text {
+  text-align: center;
 }
 
 .modal-trigger.green {
@@ -59,44 +60,49 @@ li a.btn {
   margin-right: 10px;
 }
 
-.dashboard-container {
+.not-visible {
+  display: none;
+}
+
+.collection-item.avatar {
   display: flex;
+}
+
+p.dash-notes {
+  margin-top: 10px !important;
 }
 
 .user-info {
-  flex: 2;
+  flex: 1;
 }
 
 .appointment-block {
-  flex: 3;
-}
-
-.client-list-buttons {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: 1em;
-  align-items: flex-end;
-  padding: 20px;
-}
-
-.users-index {
   flex: 2;
 }
 
-.collection-container {
-  display: flex;
+.edit-button, .delete-button {
+  background: transparent;
 }
 
-h1.flow-text {
-  text-align: center;
+.edit-button:hover, .delete-button:hover {
+  background: #eee;
 }
 
-.visible {
-  display: flex;
-  flex-direction: column;
+.edit-button i, .delete-button i {
+  color: #999;
 }
 
+#add-link.modal.open {
+  padding: 50px 0;
+  width: 30%
+}
+
+div#new-appointment.modal.open {
+  top: 2% !important;
+  max-height: 100%;
+  width: 40%;
+  padding: 20px 0;
+}
 
 /*Welcome Page*/
 /*====================================================*/
@@ -243,6 +249,41 @@ iframe {
   float: right;
 }
 
+/*Signup*/
+/*====================================================*/
+
+.signup-page-wrapper {
+  background-color: #78909c;
+}
+
+.page-header {
+  /*text-align: center;*/
+  /*display: inline;*/
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+}
+
+i.signup-icon {
+  display: block;
+  position: relative;
+  z-index: 999;
+  text-align: center;
+  color: #9e9e9e;
+  top: 60px;
+}
+
+.new-user {
+  padding: 80px 20px 50px 20px !important;
+  margin-top: -30px;
+  margin-bottom: 70px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  box-shadow: 0px 10px 10px -5px rgba(0,0,0,0.24);
+  background-color: #fff;
+  opacity: 0.7;
+}
+
 /*Footer*/
 /*====================================================*/
 
@@ -251,7 +292,7 @@ iframe {
   position: fixed;
   bottom: 0;
   z-index: 999;
-  width: 100%
+  width: 100%;
 }
 
 /*Login Page*/
@@ -326,4 +367,12 @@ input.validate {
 .login-text {
   text-align: center;
   color: #26a69a;
+}
+
+/*Error Msgs*/
+.card-panel {
+  position: absolute;
+  z-index: 999999;
+  left: 42%;
+  top: -1px;
 }
