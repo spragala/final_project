@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
   // Materialize
+  $('.modal').modal();
   $('.button-collapse').sideNav();
   $('.scrollspy').scrollSpy();
   $('select').material_select();

@@ -20,39 +20,61 @@
       <p> <strong>Name:</strong> {{name}} </p>
       <p> <strong>Username:</strong> {{username}} </p>
       <p> <strong>Email:</strong> {{email}} </p>
+      <a class="modal-trigger setting-butn" href="#user-setting"><i class="material-icons">settings</i> Settings</a>
     </div>
+
     <div class="bookshelf">
       <h5> Links for {{name}} </h5>
       <ul class="link-list">
         {{#each links}}
           <li><a href="{{this}}">{{this}}</a></li>
-          <form method="post" action="users/{{../id}}/links/{{@index}}">
+          <form method="post" action="users/{{../id}}/links/">
             <button class="delete-link"> Delete</button>
           </form>
           <hr>
         {{/each}}
       </ul>
-
-
-
     </div>
-    <div class="update">
+  </div> <!-- right-side -->
+</div> <!-- wrapper -->
+
+<div id="user-setting" class="modal">
+  <div class="update">
+    <form class="col s12" method="post" action="/users/{{id}}">
       <div class="row">
-        <form class="col s6 offset-s3" method="post" action="/users/{{id}}">
-          <div class="row">
-            <div class="input-field col s12">
-              <input name="username" type="text" class="validate">
-              <label for="username">Username</label>
-            </div>
-            <div class="input-field col s12">
-              <input name="email" type="email" class="validate">
-              <label for="email">Email</label>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit" >Submit
-            </button>
-          </div>
-        </form>
+        <div class="input-field col s10 offset-s1">
+          <input name="name" type="text" class="validate">
+          <label for="name">Name</label>
         </div>
-    </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <input name="username" type="text" class="validate">
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <input name="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <input name="password" type="password" class="validate">
+          <label for="password" data-error="wrong" data-success="right">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <input name="password2" type="password" class="validate">
+          <label for="password2" data-error="wrong" data-success="right">Confrim Password</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn waves-effect waves-light" type="submit" >Update
+        </button>
+      </div>
+    </form>
   </div>
 </div>

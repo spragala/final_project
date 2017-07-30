@@ -128,7 +128,6 @@ section {
 
 .profile-wrapper {
   display: flex;
-  height: 80vh;
 }
 
 .left {
@@ -151,6 +150,7 @@ section {
 
 .bookshelf {
   flex: 1;
+  margin-top: 2rem;
   border-top: 1px solid #666;
 }
 
@@ -163,13 +163,27 @@ iframe {
   margin-top: 0;
 }
 
+.setting-butn {
+  float: right;
+}
+
+.update {
+  padding: 30px;
+}
+
+#user-setting.open {
+  max-height: 100%
+}
+
 /*Footer*/
 /*====================================================*/
 
 .page-footer {
   background-color: #e0e0e0;
-  position: relative;
+  position: fixed;
+  bottom: 0;
   z-index: 999;
+  width: 100%
 }
 
 /*Login Page*/
