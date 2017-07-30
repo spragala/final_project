@@ -448,3 +448,33 @@ input.validate {
   margin-bottom: 20px;
   margin-top: 0;
 }
+
+/*Media Queries*/
+/*====================================================*/
+
+@media (max-width: 600px) {
+  .brand-logo {
+    font-size: 16px !important;
+    left: 45% !important;
+  }
+
+  .headshot {
+    text-align: center;
+  }
+
+  h3.header {
+    text-align: center;
+  }
+
+  .headshot img {
+    margin: auto;
+  }
+
+  .about-me-container {
+    margin: auto;
+  }
+
+  .row.container {
+    flex-direction: column;
+  }
+}
