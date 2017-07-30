@@ -65,12 +65,13 @@ app.use(expressValidator({
     while (namespace.length) {
       formParam += '[' + namespace.shift() + ']';
     }
+
     return {
       param: formParam,
       msg: msg,
-      value: value
+      value: value,
     };
-  }
+  },
 }));
 
 // Connect Flash

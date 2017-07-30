@@ -3,20 +3,20 @@ var Schema = mongoose.Schema;
 
 var AppointmentSchema = new Schema({
   _user: {
-    type: Schema.Types.ObjectId, ref: 'User', required: true
+    type: Schema.Types.ObjectId, ref: 'User', required: true,
   },
   title: {
-    type: String
+    type: String,
   },
   location: {
-    type: String
+    type: String,
   },
   time: {
-    type: Date
+    type: Date,
   },
   notes: {
-    type: String
-  }
+    type: String,
+  },
 });
 
 var Appointment = module.exports = mongoose.model('Appointment', AppointmentSchema);
