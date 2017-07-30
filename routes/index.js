@@ -11,6 +11,11 @@ router.get('/', function (req, res) {
   res.render('index');
 });
 
+// Get About Me
+router.get('/about_me', function (req, res) {
+  res.render('about_me');
+});
+
 // Get Homepage
 router.get('/profile', checkAuth, function (req, res) {
   User.findOne({ _id: req.user._id })

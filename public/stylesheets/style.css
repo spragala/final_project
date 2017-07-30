@@ -376,3 +376,22 @@ input.validate {
   left: 42%;
   top: -1px;
 }
+
+/*About Me*/
+/*====================================================*/
+
+.about-me-bg-img {
+  background: url('../images/purple-flowers.jpg') no-repeat center center;
+  background-size: cover;
+  height: 500px;
+  opacity: 0.7;
+}
+
+.about-me-pic img {
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  margin-top: -200px;
+  position: relative;
+  z-index: 999;
+  width: 80%
+}

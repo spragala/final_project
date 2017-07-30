@@ -8,11 +8,11 @@
   </div>
 
   <div class="col s12 dashboard-container">
-
     <!-- Client List -->
     <div class="users-index col s12">
       <ul class="collection with-header">
-        <li class="collection-header"><h4>Clients</h4></li>
+        <li class="collection-header">
+          <h4>Clients</h4></li>
 
         {{#each users}}
 
@@ -25,71 +25,63 @@
             </div>
             <div class="appointment-block">
 
-          {{#each times}} <!-- appointments -->
+              {{#each times}} <!-- appointments -->
+                <div class="visible">
+                  <p class="dash-appt-title"><strong>Appointment:</strong><br>{{title}}</p>
+                  <p id="time"> Time: {{time}} </p>
+                  <p class="dash-location">Location: {{location}} </p>
+                  <p class="dash-notes">Notes: {{notes}} </p>
+                </div>
 
-              <div class="visible">
-                <p class="dash-appt-title"><strong>Appointment:</strong><br>{{title}}</p>
-                <p id="time"> Time: {{time}} </p>
-                <p class="dash-location">Location: {{location}} </p>
-                <p class="dash-notes">Notes: {{notes}} </p>
-              </div>
+                <button class="edit-button btn-floating btn-flat">Edit</button>
 
-              <button class="edit-button btn-floating btn-flat">Edit</button>
-
-              <div class="not-visible">
-                <form class="update-appointment" method="post" action="/appointments/{{id}}">
-                  <div class="input-field col s12">
-                    <input type="text" name="title" value="{{title}}"/>
-                    <label for="title">Title</label>
-                  </div>
-                  <div class="input-field col s12">
-                    <input name="date" type="text" class="datepicker" value="" required>
-                    <label for="date">Date</label>
-                  </div>
-                  <div class="input-field col s12">
-                    <input name="hour" type="text" class="timepicker" value="" required>
-                    <label for="hour">Time</label>
-                  </div>
-                  <div class="input-field col s12">
-                    <input type="text" name="location" value="{{location}}"/>
-                  </div>
-                  <div class="input-field col s12">
-                    <textarea class="materialize-textarea" name="notes" value="{{notes}}"></textarea>
-                    <label for="notes">Notes</label>
-                  </div>
-                  <button type="submit" class="btn waves-effect waves-light"> Submit </button>
-                </form>
-              </div> <!-- .not-visible -->
-
-              <button class="delete-button btn-floating btn-flat" data-id="{{id}}"><i class="material-icons">close</i></button>
-
-          {{/each}}
-        </div> <!-- .appointment-block -->
-
-          <a href="/users/{{id}}" class="secondary-content btn-floating btn tooltipped" data-position="bottom" data-tooltip="Client Profile"><i class="material-icons">face</i></a>
-
+                <div class="not-visible">
+                  <form class="update-appointment" method="post" action="/appointments/{{id}}">
+                    <div class="input-field col s12">
+                      <input type="text" name="title" value="{{title}}" />
+                      <label for="title">Title</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input name="date" type="text" class="datepicker" value="" required>
+                      <label for="date">Date</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input name="hour" type="text" class="timepicker" value="" required>
+                      <label for="hour">Time</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input type="text" name="location" value="{{location}}" />
+                    </div>
+                    <div class="input-field col s12">
+                      <textarea class="materialize-textarea" name="notes" value="{{notes}}"></textarea>
+                      <label for="notes">Notes</label>
+                    </div>
+                    <button type="submit" class="btn waves-effect waves-light"> Submit </button>
+                  </form>
+                </div> <!-- .not-visible -->
+                <button class="delete-button btn-floating btn-flat" data-id="{{id}}"><i class="material-icons">close</i></button>
+              {{/each}}
+            </div> <!-- .appointment-block -->
+            <a href="/users/{{id}}" class="secondary-content btn-floating btn tooltipped" data-position="bottom" data-tooltip="Client Profile"><i class="material-icons">face</i></a>
           </li>
-
         {{/each}}
-
       </ul>
-
     </div> <!-- .users-index -->
 
-    <!-- New Appointment -->
+    <!-- New Appointment Modal -->
     <div class="modal" id="new-appointment">
       <div class="row">
         <form class="col s10 offset-s1" method="post" action="/new_appointment">
           <div class="input-field col s12">
-          <select id="client-select">
+            <select id="client-select">
             <option value="" disabled selected>Choose the client</option>
             {{#each users}}
             <option value="{{_id}}">{{name}}</option>
             {{/each}}
           </select>
-          <!-- Hidden field to pass client id -->
-          <input name="_user" type="hidden" id="client-id">
-        </div>
+            <!-- Hidden field to pass client id -->
+            <input name="_user" type="hidden" id="client-id">
+          </div>
           <div class="row">
             <div class="input-field col s12">
               <input name="title" type="text" class="validate">
@@ -120,23 +112,24 @@
               <label for="hour">Time</label>
             </div>
           </div>
-          <button class="btn waves-effect waves-light" type="submit" >Submit
+          <button class="btn waves-effect waves-light" type="submit">Submit
           </button>
         </form>
       </div>
     </div> <!-- .new-appointment form -->
 
+    <!-- Add a link modal -->
     <div class="modal" id="add-link">
       <div class="linking">
         <form class="col s6 offset-s3" id="newLinkForm">
           <div class="input-field col s12">
-          <select class="link-select" name="id">
+            <select class="link-select" name="id">
             <option value="" disabled selected>Choose a Client</option>
             {{#each users}}
             <option value="{{_id}}">{{name}}</option>
             {{/each}}
           </select>
-        </div>
+          </div>
           <div class="row">
             <div class="input-field col s12">
               <input name="links" type="text" class="validate link-data">
