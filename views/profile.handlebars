@@ -29,7 +29,7 @@
         {{#each links}}
           <li>
             <a class="link" href="{{this}}">{{this}}</a>
-            <form class="delete-butn" method="post" action="users/{{../id}}/links/">
+            <form class="delete-butn" method="post" action="users/{{../id}}/links/{{@index}}">
               <button class="delete-link btn-floating btn waves-effect waves-light red"><i class="material-icons">clear</i></button>
             </form>
           </li>

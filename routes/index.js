@@ -104,7 +104,7 @@ router.get('/dashboard', checkAuth, function (req, res) {
         user.times = user.appointments.map(function (x) {
           newTime = `${DAYS[x.time.getDay()]} at ${x.time
             .toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
-          return { title: x.title, location: x.location, time: newTime, id: x._id };
+          return { title: x.title, location: x.location, time: newTime, id: x._id, notes: x.notes };
         }
       );
         return user;
