@@ -5,8 +5,8 @@
     <div class="appointment">
       <h5> Appointments </h5>
       {{#each appointments}}
-        <p> <strong>{{location}}</strong></p>
-        <p>{{time}}</p>
+        <p class="location"> <strong>{{location}}</strong></p>
+        <p class="time">{{time}}</p>
       {{/each}}
     </div>
     <div class="map">
@@ -17,20 +17,22 @@
   <div class="right-side">
     <div class="personal-info-block">
       <h2 class="personal-info-head"> Personal Information</h2>
-      <p> <strong>Name:</strong> {{name}} </p>
-      <p> <strong>Username:</strong> {{username}} </p>
-      <p> <strong>Email:</strong> {{email}} </p>
-      <a class="modal-trigger setting-butn" href="#user-setting"><i class="material-icons">settings</i> Settings</a>
+      <p class="personal-info-text"> <strong>Name:</strong> {{name}} </p>
+      <p class="personal-info-text"> <strong>Username:</strong> {{username}} </p>
+      <p class="personal-info-text"> <strong>Email:</strong> {{email}} </p>
+      <a class="modal-trigger btn-floating btn-med waves-effect waves-light" href="#user-setting"><i class="material-icons">settings</i>Settings</a>
     </div>
 
     <div class="bookshelf">
       <h5> Links for {{name}} </h5>
       <ul class="link-list">
         {{#each links}}
-          <li><a href="{{this}}">{{this}}</a></li>
-          <form method="post" action="users/{{../id}}/links/">
-            <button class="delete-link"> Delete</button>
-          </form>
+          <li>
+            <a class="link" href="{{this}}">{{this}}</a>
+            <form class="delete-butn" method="post" action="users/{{../id}}/links/">
+              <button class="delete-link btn-floating btn waves-effect waves-light red"><i class="material-icons">clear</i></button>
+            </form>
+          </li>
           <hr>
         {{/each}}
       </ul>
@@ -57,18 +59,6 @@
         <div class="input-field col s10 offset-s1">
           <input name="email" type="email" class="validate">
           <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10 offset-s1">
-          <input name="password" type="password" class="validate">
-          <label for="password" data-error="wrong" data-success="right">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10 offset-s1">
-          <input name="password2" type="password" class="validate">
-          <label for="password2" data-error="wrong" data-success="right">Confrim Password</label>
         </div>
       </div>
       <div class="modal-footer">
