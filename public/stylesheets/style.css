@@ -395,3 +395,56 @@ input.validate {
   z-index: 999;
   width: 80%
 }
+
+/*Pyschotherapy*/
+/*====================================================*/
+
+.psycho-bg-img {
+  background: url('../images/growing.jpg') no-repeat bottom center;
+  background-size: cover;
+  height: 500px;
+  opacity: 0.7;
+}
+
+/*Contact*/
+/*====================================================*/
+
+.contact-wrapper {
+  margin-bottom: 80px;
+}
+
+.contact-bg-img {
+  background: url('../images/blossom.jpg') no-repeat center center;
+  background-size: cover;
+  height: 500px;
+  opacity: 0.7;
+}
+
+.contact-info {
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  width: 70%;
+  border: 10px solid rgba(0,0,0,0.2);
+}
+
+.contact-left {
+  flex: 1;
+  padding: 10px;
+}
+
+.contact-right {
+  flex: 1;
+  padding: 10px;
+}
+
+.price, .in-person {
+  margin: 0;
+}
+
+.contact-rtn {
+  margin-bottom: 20px;
+  margin-top: 0;
+}

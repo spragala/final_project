@@ -16,6 +16,16 @@ router.get('/about_me', function (req, res) {
   res.render('about_me');
 });
 
+// Pyschotherapy
+router.get('/psychotherapy', function (req, res) {
+  res.render('psychotherapy');
+});
+
+// Contact
+router.get('/contact', function (req, res) {
+  res.render('contact');
+});
+
 // Get Homepage
 router.get('/profile', checkAuth, function (req, res) {
   User.findOne({ _id: req.user._id })
