@@ -1,47 +1,71 @@
 <div class="row">
-  <h1 class="flow-text">DASHBOARD</h1>
-  <div class="col s12 index-text">
+  <div class="dash-header">
+    <h1 class="flow-text"><strong>DASHBOARD</strong></h1>
+    <a class="modal-trigger btn-floating btn green" href="#add-link"><i class="material-icons">insert_link</i>Add a Link</a>
+    <a class="modal-trigger btn-floating btn light-blue" href="#new-appointment"><i class="material-icons">add</i></a>
+    <a class="btn-floating btn-signup" href="/users/signup"><i class="material-icons">face</i></a>
+  </div>
+  <div class="col s12 dashboard-container">
 
     <!-- Client List -->
     <div class="users-index">
       <ul class="collection with-header">
         <li class="collection-header"><h4>Clients</h4></li>
         {{#each users}}
-          <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title">{{name}}</span>
-            <br>
-              <div class="appointment-block">
-                {{#each times}}
-                <div class="visible">
-                  <p> Next Appointment: <br><strong>{{title}}</strong></p>
-                  <p id="time"> Time: {{time}} </p>
-                  <p>Location: {{location}} </p>
-                  <p>Notes: {{notes}} </p>
-                </div>
-                <button class="edit-button">Edit</button>
-                <div class="not-visible">
-                  <form class="update-appointment" method="post" action="/appointments/{{id}}">
-                    <input type="text" name="title" value="{{title}}"/>
-                    <input name="date" type="text" class="datepicker" value="{{time}}">
-                    <input name="hour" type="text" class="timepicker" value="{{time}}">
-                    <input type="text" name="location" value="{{location}}"/>
-                    <input type="textarea" name="notes" value="{{notes}}"/>
-                    <input type="submit"/>
-                  </form>
-                </div>
-                <button class="delete-button" data-id="{{id}}">Delete</button>
-                {{/each}}
+          <li class="collection-itme avatar">
+            <div class="user-info">
+              <i class="material-icons circle">folder</i>
+              <span class="title">{{name}}</span>
+              <br>
+              <span class="email">{{email}}</span>
+            </div>
+            <div class="appointment-block">
+              {{#each times}}
+              <div class="visible">
+                <p> Next Appointment: <br><strong>{{title}}</strong></p>
+                <p id="time"> Time: {{time}} </p>
+                <p>Location: {{location}} </p>
+                <p>Notes: {{notes}} </p>
               </div>
-               <p>Balance: $0.00</p>
-            <a href="/users/{{id}}" class="secondary-content"><i class="material-icons">grade</i></a>
+              <button class="edit-button btn">Edit</button>
+              <div class="not-visible">
+                <form class="update-appointment" method="post" action="/appointments/{{id}}">
+                  <div class="input-field col s12">
+                    <input type="text" name="title" value="{{title}}"/>
+                    <label for="title">Title</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input name="date" type="text" class="datepicker" value="" required>
+                    <label for="date">Date</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input name="hour" type="text" class="timepicker" value="" required>
+                    <label for="hour">Time</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input type="text" name="location" value="{{location}}"/>
+                  </div>
+                  <div class="input-field col s12">
+                    <textarea class="materialize-textarea" name="notes" value="{{notes}}"></textarea>
+                    <label for="notes">Notes</label>
+                  </div>
+                  <button type="submit" class="btn waves-effect waves-light"> Submit </button>
+                </form>
+              </div>
+              <button class="delete-button btn" data-id="{{id}}">Delete</button>
+              {{/each}}
+            </div>
+            <div class="client-list-buttons">
+              <a href="/users/{{id}}" class="secondary-content btn">Profile</a>
+            </div>
           </li>
+          <hr>
         {{/each}}
       </ul>
     </div>
 
     <!-- New Appointment -->
-    <div class="calendar">
+    <div class="modal" id="new-appointment">
       <div class="row">
         <form class="col s6 offset-s3" method="post" action="/new_appointment">
           <div class="input-field col s12">
@@ -90,12 +114,12 @@
       </div>
     </div> <!-- .new-appointment form -->
 
-    <div class="bookshelf">
-      <div class="row">
+    <div class="modal" id="add-link">
+      <div class="linking">
         <form class="col s6 offset-s3" id="newLinkForm">
           <div class="input-field col s12">
           <select class="link-select" name="id">
-            <option value="" disabled>Add a link</option>
+            <option value="" disabled selected>Choose a Client</option>
             {{#each users}}
             <option value="{{_id}}">{{name}}</option>
             {{/each}}
@@ -107,7 +131,7 @@
               <label for="links">Links</label>
             </div>
           </div>
-          <button class="btn waves-effect waves-light" type="submit" >Submit
+          <button class="btn waves-effect waves-light" type="submit">Submit
           </button>
         </form>
       </div>

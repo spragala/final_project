@@ -35,22 +35,68 @@ li a.btn {
   display: none;
 }
 
-.index-text {
+.dash-header {
+  padding: 20px;
+  text-align: center;
+}
+
+.flow-text {
+  display: inline;
+  padding: 10px 0;
+}
+
+.modal-trigger.green {
+  display: inline;
+}
+
+.btn.light-blue {
+  margin-right: 10px;
+}
+
+.btn-signup {
+  background-color: #ab47bc;
+  float: right;
+  margin-right: 10px;
+}
+
+.dashboard-container {
   display: flex;
 }
 
-.users-index {
-  flex: 1;
+.user-info {
+  flex: 2;
 }
 
-.calendar {
+.appointment-block {
+  flex: 3;
+}
+
+.client-list-buttons {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: 1em;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.users-index {
   flex: 2;
-  text-align: center;
+}
+
+.collection-container {
+  display: flex;
 }
 
 h1.flow-text {
   text-align: center;
 }
+
+.visible {
+  display: flex;
+  flex-direction: column;
+}
+
 
 /*Welcome Page*/
 /*====================================================*/
@@ -196,8 +242,6 @@ iframe {
   display: inline;
   float: right;
 }
-
-
 
 /*Footer*/
 /*====================================================*/
