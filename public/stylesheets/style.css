@@ -559,6 +559,10 @@ input.validate {
   .contact-text {
     margin: 5px;
   }
+
+  .delete-butn {
+    float: none;
+  }
 }
 
 @media (max-width: 833px) {
