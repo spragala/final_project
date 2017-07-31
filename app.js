@@ -8,8 +8,6 @@ var path = require('path');
 // Initialize App
 var app = express();
 
-//var admin = express(); TODO - create Admin pg
-
 // Set Port
 app.listen(process.env.PORT || 3000, function () {
   console.log('Server started on port: http://localhost:3000/');
@@ -19,7 +17,7 @@ app.listen(process.env.PORT || 3000, function () {
 * DATABASE  *
 ************/
 
-var db = require("./models"); // index.js
+var db = require('./models'); // index.js
 
 /************
 * MIDDLEWARE *
@@ -48,7 +46,7 @@ app.use(function (req, res, next) {
 app.use(session({
   secret: 'secret',
   saveUninitialized: true,
-  resave: true
+  resave: true,
 }));
 
 // Passport init

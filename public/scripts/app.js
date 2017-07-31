@@ -1,10 +1,9 @@
 $(document).ready(function () {
 
-  // Materialize
+  // Materialize jquery
   $('.modal').modal();
   $('.tooltipped').tooltip({ delay: 50 });
   $('.button-collapse').sideNav();
-  $('.scrollspy').scrollSpy();
   $('select').material_select();
   $('#client-select').on('change', function () {
       $('#client-id').val($('#client-select').val());

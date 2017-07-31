@@ -2,7 +2,6 @@ body {
   font-family: 'Muli', sans-serif;
 }
 
-
 /* Navbar */
 /*====================================================*/
 .brand-logo {
@@ -152,7 +151,6 @@ section {
   color: #fff;
   font-size: 50px;
   letter-spacing: .04em;
-  /*font-weight: bold;*/
   font-family: 'Libre Baskerville', serif;
 }
 
@@ -173,6 +171,10 @@ section {
   letter-spacing: .4px;
   line-height: 1.5em;
   color: #737784;
+}
+
+.highlight a {
+  color: #ee6e73;
 }
 
 
@@ -260,14 +262,6 @@ iframe {
 
 .signup-page-wrapper {
   background-color: #78909c;
-}
-
-.page-header {
-  /*text-align: center;*/
-  /*display: inline;*/
-  margin: 0;
-  padding: 20px;
-  color: #fff;
 }
 
 i.signup-icon {
@@ -557,4 +551,32 @@ input.validate {
   .contact-container {
     width: 90%;
   }
+
+  .login-form {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 833px) {
+  nav .brand-logo {
+    font-size: 1.7rem;
+    margin: 0;
+  }
+
+  .profile-wrapper {
+    flex-direction: column;
+  }
+
+  .right-side {
+    margin: 0 30px;
+  }
+
+  .form-container {
+    margin: 0;
+  }
+
+  .login-title {
+    display: none;
+  }
+
 }
