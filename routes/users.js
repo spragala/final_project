@@ -132,6 +132,8 @@ router.post('/:id', checkAuth, function (req, res) {
 
   if (req.body.username) objForUpdate.username = req.body.username;
   if (req.body.email) objForUpdate.email = req.body.email;
+  if (req.body.name) obForUpdate.name = req.body.name;
+
   User.update({ _id: req.params.id }, objForUpdate, function (err) {
     if (err) throw err;
     res.redirect('/profile');

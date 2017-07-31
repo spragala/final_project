@@ -1,59 +1,87 @@
 <div class="row">
-  <h1 class="flow-text">DASHBOARD</h1>
-  <div class="col s12 index-text">
 
+  <div class="dash-header">
+    <h1 class="flow-text"><strong>DASHBOARD</strong></h1>
+    <a class="modal-trigger btn-floating btn tooltipped green" href="#add-link" data-position="bottom" data-tooltip="Add a Link"><i class="material-icons">insert_link</i></a>
+    <a class="modal-trigger btn-floating btn tooltipped light-blue" href="#new-appointment" data-position="bottom" data-tooltip="New Appointment"><i class="material-icons">add</i></a>
+    <a class="btn-floating btn-signup btn tooltipped" href="/users/signup" data-position="bottom" data-tooltip="Add a Client"><i class="material-icons">group_add</i></a>
+  </div>
+
+  <div class="col s12 dashboard-container">
     <!-- Client List -->
-    <div class="users-index">
+    <div class="users-index col s12">
       <ul class="collection with-header">
-        <li class="collection-header"><h4>Clients</h4></li>
+        <li class="collection-header">
+          <h4>Clients</h4></li>
+
         {{#each users}}
+
           <li class="collection-item avatar">
-            <i class="material-icons circle">folder</i>
-            <span class="title">{{name}}</span>
-            <br>
-              <div class="appointment-block">
-                {{#each times}}
+            <div class="user-info">
+              <i class="material-icons circle">folder</i>
+              <span class="title">{{name}}</span>
+              <br>
+              <span class="email">{{email}}</span>
+            </div>
+            <div class="appointment-block">
+
+              {{#each times}} <!-- appointments -->
                 <div class="visible">
-                  <p> Next Appointment: <br><strong>{{title}}</strong></p>
+                  <p class="dash-appt-title"><strong>Appointment:</strong><br>{{title}}</p>
                   <p id="time"> Time: {{time}} </p>
-                  <p>Location: {{location}} </p>
-                  <p>Notes: {{notes}} </p>
+                  <p class="dash-location">Location: {{location}} </p>
+                  <p class="dash-notes">Notes: {{notes}} </p>
                 </div>
-                <button class="edit-button">Edit</button>
+
+                <button class="edit-button btn-floating btn-flat">Edit</button>
+
                 <div class="not-visible">
                   <form class="update-appointment" method="post" action="/appointments/{{id}}">
-                    <input type="text" name="title" value="{{title}}"/>
-                    <input name="date" type="text" class="datepicker" value="{{time}}">
-                    <input name="hour" type="text" class="timepicker" value="{{time}}">
-                    <input type="text" name="location" value="{{location}}"/>
-                    <input type="textarea" name="notes" value="{{notes}}"/>
-                    <input type="submit"/>
+                    <div class="input-field col s12">
+                      <input type="text" name="title" value="{{title}}" />
+                      <label for="title">Title</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input name="date" type="text" class="datepicker" value="" required>
+                      <label for="date">Date</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input name="hour" type="text" class="timepicker" value="" required>
+                      <label for="hour">Time</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input type="text" name="location" value="{{location}}" />
+                    </div>
+                    <div class="input-field col s12">
+                      <textarea class="materialize-textarea" name="notes" value="{{notes}}"></textarea>
+                      <label for="notes">Notes</label>
+                    </div>
+                    <button type="submit" class="btn waves-effect waves-light"> Submit </button>
                   </form>
-                </div>
-                <button class="delete-button" data-id="{{id}}">Delete</button>
-                {{/each}}
-              </div>
-               <p>Balance: $0.00</p>
-            <a href="/users/{{id}}" class="secondary-content"><i class="material-icons">grade</i></a>
+                </div> <!-- .not-visible -->
+                <button class="delete-button btn-floating btn-flat" data-id="{{id}}"><i class="material-icons">close</i></button>
+              {{/each}}
+            </div> <!-- .appointment-block -->
+            <a href="/users/{{id}}" class="secondary-content btn-floating btn tooltipped" data-position="bottom" data-tooltip="Client Profile"><i class="material-icons">face</i></a>
           </li>
         {{/each}}
       </ul>
-    </div>
+    </div> <!-- .users-index -->
 
-    <!-- New Appointment -->
-    <div class="calendar">
+    <!-- New Appointment Modal -->
+    <div class="modal" id="new-appointment">
       <div class="row">
-        <form class="col s6 offset-s3" method="post" action="/new_appointment">
+        <form class="col s10 offset-s1" method="post" action="/new_appointment">
           <div class="input-field col s12">
-          <select id="client-select">
+            <select id="client-select">
             <option value="" disabled selected>Choose the client</option>
             {{#each users}}
             <option value="{{_id}}">{{name}}</option>
             {{/each}}
           </select>
-          <!-- Hidden field to pass client id -->
-          <input name="_user" type="hidden" id="client-id">
-        </div>
+            <!-- Hidden field to pass client id -->
+            <input name="_user" type="hidden" id="client-id">
+          </div>
           <div class="row">
             <div class="input-field col s12">
               <input name="title" type="text" class="validate">
@@ -84,34 +112,35 @@
               <label for="hour">Time</label>
             </div>
           </div>
-          <button class="btn waves-effect waves-light" type="submit" >Submit
+          <button class="btn waves-effect waves-light" type="submit">Submit
           </button>
         </form>
       </div>
     </div> <!-- .new-appointment form -->
 
-    <div class="bookshelf">
-      <div class="row">
+    <!-- Add a link modal -->
+    <div class="modal" id="add-link">
+      <div class="linking">
         <form class="col s6 offset-s3" id="newLinkForm">
           <div class="input-field col s12">
-          <select class="link-select" name="id">
-            <option value="" disabled>Add a link</option>
+            <select class="link-select" name="id">
+            <option value="" disabled selected>Choose a Client</option>
             {{#each users}}
             <option value="{{_id}}">{{name}}</option>
             {{/each}}
           </select>
-        </div>
+          </div>
           <div class="row">
             <div class="input-field col s12">
               <input name="links" type="text" class="validate link-data">
               <label for="links">Links</label>
             </div>
           </div>
-          <button class="btn waves-effect waves-light" type="submit" >Submit
+          <button class="btn waves-effect waves-light" type="submit">Submit
           </button>
         </form>
       </div>
     </div>
 
-  </div> <!-- .index-text -->
+  </div> <!-- .dashboard-container -->
 </div> <!-- .row -->

@@ -1,18 +1,28 @@
-<div class="row">
-  <form class="col s6 offset-s3" method="post" action="/users/login">
-    <div class="row">
-      <div class="input-field col s12">
-        <input name="username" type="text" class="validate">
-        <label for="username">Username</label>
-      </div>
+<div class="login-bg-img"></div>
+<div class="row login-wrapper">
+  <div class="col s10 offset-s1 col l4 offset-l4 form-container">
+    <div class="col s12 login-title">
+      <h3 class="login-text"> Log In </h3>
     </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input name="password" type="password" class="validate">
-        <label for="password">Password</label>
+    <form class="login-form" method="post" action="/users/login">
+      <div class="row">
+        <div class="input-field col s9 offset-s1 username">
+          <i class="material-icons prefix">account_circle</i>
+          <input name="username" type="text" class="validate ">
+          <label for="username">Username</label>
+        </div>
       </div>
+      <div class="row">
+        <div class="input-field col s9 offset-s1 password">
+          <i class="material-icons prefix">lock</i>
+          <input name="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="login-footer">
+        <button class="btn waves-effect waves-light login-butn" type="submit">Login
+        </button>
     </div>
-    <button class="btn waves-effect waves-light" type="submit">Submit
-    </button>
-  </form>
+    </form>
+  </div>
 </div>

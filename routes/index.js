@@ -3,9 +3,27 @@ var router = express.Router();
 var User = require('../models/user');
 var Appointment = require('../models/appointment');
 
+// Globals
+DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 // Get Welcomepage
 router.get('/', function (req, res) {
   res.render('index');
+});
+
+// Get About Me
+router.get('/about_me', function (req, res) {
+  res.render('about_me');
+});
+
+// Pyschotherapy
+router.get('/psychotherapy', function (req, res) {
+  res.render('psychotherapy');
+});
+
+// Contact
+router.get('/contact', function (req, res) {
+  res.render('contact');
 });
 
 // Get Homepage
@@ -13,14 +31,20 @@ router.get('/profile', checkAuth, function (req, res) {
   User.findOne({ _id: req.user._id })
   .populate('appointments')
   .exec(function (err, user) {
-    // need function to reformat user.appointments.time
     if (err) throw err;
+
+    potato = user.appointments.map(function (x) {
+      newTime = `${DAYS[x.time.getDay()]} at ${x.time
+        .toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+      return { title: x.title, location: x.location, time: newTime, id: x._id };
+    });
+
     res.render('profile', {
       username: user.username,
       name: user.name,
       email: user.email,
       id: user._id,
-      appointments: user.appointments,
+      appointments: potato,
       links: user.links,
     });
   });
@@ -82,19 +106,20 @@ router.delete('/appointments/:id', function (req, res) {
   });
 });
 
-DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
 // Admin Dashboard
 router.get('/dashboard', checkAuth, function (req, res) {
   if (req.user.admin === true) {
-    User.find({}).populate('appointments').exec(function (err, allUsers) {
+    User.find({})
+    .populate('appointments')
+    .exec(function (err, allUsers) {
       if (err) throw err;
 
       // hattip to michelle
       clients = allUsers.map(function (user) {
-        user.times = user.appointments.map(function (x) { // adding 'times' to users to change Date into String
-          newTime = `${DAYS[x.time.getDay()]} at ${x.time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
-          return { title: x.title, location: x.location, time: newTime, id: x._id };
+        user.times = user.appointments.map(function (x) {
+          newTime = `${DAYS[x.time.getDay()]} at ${x.time
+            .toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+          return { title: x.title, location: x.location, time: newTime, id: x._id, notes: x.notes };
         }
       );
         return user;

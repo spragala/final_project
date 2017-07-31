@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
   // Materialize
+  $('.modal').modal();
+  $('.tooltipped').tooltip({ delay: 50 });
   $('.button-collapse').sideNav();
   $('.scrollspy').scrollSpy();
   $('select').material_select();
