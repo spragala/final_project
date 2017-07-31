@@ -555,6 +555,10 @@ input.validate {
   .login-form {
     margin-top: 50px;
   }
+
+  .contact-text {
+    margin: 5px;
+  }
 }
 
 @media (max-width: 833px) {

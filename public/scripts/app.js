@@ -29,8 +29,8 @@ $(document).ready(function () {
   });
 
   $('.edit-button').on('click', function (e) {
-    console.log('clicked');
-    var $container = $(this).parent(".appointment-block");
+    e.preventDefault();
+    var $container = $(this).parent('.appointment-block');
     $container.find('.visible').hide();
     $container.find('.not-visible').show();
   });
