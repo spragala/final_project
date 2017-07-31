@@ -470,11 +470,57 @@ input.validate {
     margin: auto;
   }
 
+  .about-me-pic {
+    margin-top: -80px;
+  }
+
   .about-me-container {
     margin: auto;
   }
 
   .row.container {
     flex-direction: column;
+    padding: 0 0 70px 0;
+  }
+
+  .profile-wrapper {
+    flex-direction: column;
+  }
+
+  .map iframe {
+    width: 275px;
+  }
+
+  .right-side {
+    margin: 0 30px;
+  }
+
+  #pyscho {
+    font-size: 45px;
+    top: 20%;
+  }
+
+  .collection {
+    margin-top: -20px;
+  }
+
+  .dash-header {
+    text-align: left;
+  }
+
+  .btn.green {
+    margin-right: 10px;
+  }
+
+  div#new-appointment.modal.open {
+    width: 80%;
+  }
+
+  .collection-item.avatar {
+    flex-direction: column;
+  }
+
+  #add-link.modal.open {
+    width: 80%;
   }
 }
