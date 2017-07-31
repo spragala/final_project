@@ -1,3 +1,7 @@
+body {
+  font-family: 'Muli', sans-serif;
+}
+
 
 /* Navbar */
 /*====================================================*/
@@ -8,6 +12,8 @@
 
 a.brand-logo {
   color: #ee6e73;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
 }
 
 nav .nav-wrapper {
@@ -146,8 +152,8 @@ section {
   color: #fff;
   font-size: 50px;
   letter-spacing: .04em;
-  font-family: Helvetica;
-  font-weight: bold;
+  /*font-weight: bold;*/
+  font-family: 'Libre Baskerville', serif;
 }
 
 .headshot img {
@@ -159,10 +165,10 @@ section {
   margin-top: 0;
   font-weight: 200;
   color: #737784;
+  font-family: 'Libre Baskerville', serif;
 }
 
 .text {
-  font-family: 'Open Sans', Helvetica;
   font-size: 16px;
   letter-spacing: .4px;
   line-height: 1.5em;
@@ -471,8 +477,15 @@ input.validate {
 
 @media (max-width: 600px) {
   .brand-logo {
-    font-size: 16px !important;
-    left: 45% !important;
+    font-size: 14px !important;
+    left: 49% !important;
+    margin: 0;
+    text-align: center;
+  }
+
+  .card-panel {
+    left: 20%;
+    right: 20%;
   }
 
   .headshot {
