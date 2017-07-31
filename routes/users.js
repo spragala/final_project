@@ -157,7 +157,6 @@ router.post('/:id/links', checkAuth, function (req, res) {
 
 //  delete a link
 router.post('/:id/links/:index', function (req, res) {
-  console.log(req.params)
   User.findById(req.params.id, function (err, user) {
     if (err) throw err;
     user.links.splice(req.params.index, 1);
