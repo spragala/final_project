@@ -16,10 +16,10 @@ As the administrator Katie has the ability to upload links to specific clients a
 
 The site was designed with mobile in mind.
 
-![About Me Mobile](https://user-images.githubusercontent.com/28071777/28790996-cf8fc6dc-75df-11e7-93ab-30f2017ee0af.png =365)
-![About Me Desktop](https://user-images.githubusercontent.com/28071777/28790930-9cdf96ea-75df-11e7-8a73-60091215d090.png =700)
-![Personal Info Mobile](https://user-images.githubusercontent.com/28071777/28790938-a23ad62c-75df-11e7-8978-73e82f2bb975.png =365)
-![Personal Info Desktop](https://user-images.githubusercontent.com/28071777/28790956-a829b2f6-75df-11e7-9137-1cc39acc49bf.png =700)
+![About Me Mobile](https://user-images.githubusercontent.com/28071777/28790996-cf8fc6dc-75df-11e7-93ab-30f2017ee0af.png)
+![About Me Desktop](https://user-images.githubusercontent.com/28071777/28790930-9cdf96ea-75df-11e7-8a73-60091215d090.png)
+![Personal Info Mobile](https://user-images.githubusercontent.com/28071777/28790938-a23ad62c-75df-11e7-8978-73e82f2bb975.png)
+![Personal Info Desktop](https://user-images.githubusercontent.com/28071777/28790956-a829b2f6-75df-11e7-9137-1cc39acc49bf.png)
 
 
 ## Built With
