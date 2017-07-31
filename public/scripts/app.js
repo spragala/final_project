@@ -30,10 +30,9 @@ $(document).ready(function () {
 
   $('.edit-button').on('click', function (e) {
     console.log('clicked');
-    $show = $(e.target).prev('.visible');
-    console.log($show);
-    $show.hide();
-    $(e.target).next().show();
+    var $container = $(this).parent(".appointment-block");
+    $container.find('.visible').hide();
+    $container.find('.not-visible').show();
   });
 
   $('.delete-button').on('click', function (e) {
