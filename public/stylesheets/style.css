@@ -340,7 +340,7 @@ i.signup-icon {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 998;
 }
 
 .login-title {
@@ -409,7 +409,7 @@ input.validate {
   border: 3px solid rgba(255, 255, 255, 0.5);
   margin-top: -200px;
   position: relative;
-  z-index: 999;
+  z-index: 998;
   width: 80%
 }
 
@@ -554,6 +554,10 @@ input.validate {
 
   .login-form {
     margin-top: 50px;
+  }
+
+  .contact-text {
+    margin: 5px;
   }
 }
 
