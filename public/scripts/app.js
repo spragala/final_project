@@ -35,7 +35,7 @@ $(document).ready(function () {
     $container.find('.not-visible').show();
   });
 
-  $('.delete-button').on('click', function (e) {
+  $('.appointment-delete').on('click', function (e) {
       $.ajax({
         method: 'DELETE',
         url: '/appointments/' + $(this).attr('data-id'),
