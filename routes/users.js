@@ -42,9 +42,9 @@ router.post('/signup', function (req, res) {
       if (err) throw err;
     });
 
-    req.flash('success_msg', 'You have successfully created an account, please login.');
+    req.flash('success_msg', 'Client added successfully!');
 
-    res.redirect('/users/login');
+    res.redirect('/dashboard');
   }
 }); // <- router.post
 
