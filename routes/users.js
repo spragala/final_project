@@ -5,8 +5,13 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
 // Signup
-router.get('/signup', function (req, res) {
-  res.render('signup');
+router.get('/signup', checkAuth, function (req, res) {
+  if (req.user.admin === true) {
+    res.render('signup');
+  } else {
+    req.flash('error_msg', 'You are not authorized');
+    res.redirect('/');
+  }
 });
 
 router.post('/signup', function (req, res) {
