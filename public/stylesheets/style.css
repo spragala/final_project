@@ -293,6 +293,24 @@ i.signup-icon {
   bottom: 0;
   z-index: 999;
   width: 100%;
+  padding-top: 10px;
+}
+
+.footer-text {
+  display: inline;
+}
+
+.footer-email {
+  margin-bottom: 8px;
+}
+
+.footer-email i {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.footer-email a {
+  padding-top: 2px;
 }
 
 /*Login Page*/
@@ -347,7 +365,6 @@ i.signup-icon {
 }
 
 .input-field label {
-  /*color: #ee6e73;*/
   letter-spacing: .03em;
 }
 
@@ -522,5 +539,9 @@ input.validate {
 
   #add-link.modal.open {
     width: 80%;
+  }
+
+  .contact-container {
+    width: 90%;
   }
 }
