@@ -27,7 +27,7 @@ var clientList = [
   email: 'biglilguy@gmail.com',
   password: '1234',
   admin: false,
-  links: [],
+  links: ['http://awoiaf.westeros.org/index.php/Tyrion_Lannister', 'https://tinybuddha.com/topic/i-hate-my-sisterhow-can-i-ignore-her/'],
 },
 {
   name: 'Bran Stark',
@@ -56,7 +56,7 @@ db.User.remove({}, function (err, users) {
       email: userData.email,
       name: userData.name,
       admin: userData.admin,
-      links: userData.admin,
+      links: userData.links,
     });
     User.createUser(client, function (err, user) {
       if (err) throw err;
