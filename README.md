@@ -1,16 +1,16 @@
 # Katie App
 
-Client-attracting website for a therapist and for her to use to manage her existing client's appointments.
+Client-attracting website for a therapist that will also allow ongoing therapist-client communication and appointment management.
 
 Site can be found [here](https://safe-mesa-87284.herokuapp.com/).
 
 ## Description
 
-Catherine Sprague is a therapist working in the bay area. She's building her client base so I built a site for her that would act as a marketing tool to advertise herself as well as a useful tool for her and her clients.
+Catherine Sprague is a therapist working in the Bay Area. She is building her client base, so I built a site that would act as a marketing tool for her business; as a platform for communication with both prospective and established clients; and as a way to track appointments for both Catherine and her clients.
 
-Katie's registered clients will see their personal page after logging where they can view information about their appointments, information for getting a hold of Catherine and a customized 'bookshelf'. Catherine can add links to whatever information she think might be pertinent to that client in the bookshelf. Future features include adding a calendar for clients to request additional appointments or changes and the ability to pay Catherine from the site.
+After logging in, Catherine's registered clients will see their personal page; here they can view information about their appointments, information for getting ahold of Catherine, and view a customized "bookshelf" (a collection of links or other information Catherine thinks would be useful to share with the client). Future features include adding a calendar for clients to request or change appointments and the ability to pay Catherine from the site.
 
-As the administrator Katie has the ability to upload links to specific clients as mentioned above, as well as add clients, edit appointment details, delete appointments and so forth. Future features include a calendar to better see her schedule.
+As the administrator, Catherine has the ability to upload links to a client's bookshelf, to add clients, to edit appointment details, and to delete appointments. Future features include a calendar to better see her schedule and the ability to receice payment through the site.
 
 ## Mobile
 
