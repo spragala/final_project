@@ -14,42 +14,47 @@ router.get('/signup', checkAuth, function (req, res) {
   }
 });
 
-router.post('/signup', function (req, res) {
-  var name = req.body.name;
-  var email = req.body.email;
-  var username = req.body.username;
-  var password = req.body.password;
-  var password2 = req.body.password2;
+router.post('/signup', checkAuth, function (req, res) {
+  if (req.user.admin === true) {
+    var name = req.body.name;
+    var email = req.body.email;
+    var username = req.body.username;
+    var password = req.body.password;
+    var password2 = req.body.password2;
 
-  // Validations
-  req.checkBody('name', 'Name is required').notEmpty();
-  req.checkBody('email', 'Email address is required').notEmpty();
-  req.checkBody('email', 'Email address is not vaild').isEmail();
-  req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('password', 'A password is required').notEmpty();
-  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+    // Validations
+    req.checkBody('name', 'Name is required').notEmpty();
+    req.checkBody('email', 'Email address is required').notEmpty();
+    req.checkBody('email', 'Email address is not vaild').isEmail();
+    req.checkBody('username', 'Username is required').notEmpty();
+    req.checkBody('password', 'A password is required').notEmpty();
+    req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-  var errors = req.validationErrors();
-  if (errors) {
-    res.render('signup', {
-      errors: errors,
-    });
+    var errors = req.validationErrors();
+    if (errors) {
+      res.render('signup', {
+        errors: errors,
+      });
+    } else {
+      var newUser = new User({
+        name: name,
+        email: email,
+        username: username,
+        password: password,
+        admin: false,
+      });
+
+      User.createUser(newUser, function (err, user) {
+        if (err) throw err;
+      });
+
+      req.flash('success_msg', 'Client added successfully!');
+
+      res.redirect('/dashboard');
+    }
   } else {
-    var newUser = new User({
-      name: name,
-      email: email,
-      username: username,
-      password: password,
-      admin: false,
-    });
-
-    User.createUser(newUser, function (err, user) {
-      if (err) throw err;
-    });
-
-    req.flash('success_msg', 'Client added successfully!');
-
-    res.redirect('/dashboard');
+    req.flash('error_msg', 'You are not authorized');
+    res.redirect('/');
   }
 }); // <- router.post
 
@@ -155,7 +160,7 @@ router.post('/:id/links', checkAuth, function (req, res) {
   });
 });
 
-//  delete a link
+//  Delete a link
 router.post('/:id/links/:index', function (req, res) {
   User.findById(req.params.id, function (err, user) {
     if (err) throw err;

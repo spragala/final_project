@@ -33,7 +33,7 @@ router.get('/profile', checkAuth, function (req, res) {
   .exec(function (err, user) {
     if (err) throw err;
 
-    potato = user.appointments.map(function (x) {
+    appointments = user.appointments.map(function (x) {
       newTime = `${DAYS[x.time.getDay()]} at ${x.time
         .toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
       return { title: x.title, location: x.location, time: newTime, id: x._id };
@@ -44,14 +44,14 @@ router.get('/profile', checkAuth, function (req, res) {
       name: user.name,
       email: user.email,
       id: user._id,
-      appointments: potato,
+      appointments: appointments,
       links: user.links,
     });
   });
 });
 
 // Create an appointment for a User
-router.post('/new_appointment', function (req, res) {
+router.post('/new_appointment', checkAuth, function (req, res) {
   var title = req.body.title;
   var location = req.body.location;
   var notes = req.body.notes;
@@ -77,7 +77,7 @@ router.post('/new_appointment', function (req, res) {
 });
 
 // Update Appointment
-router.post('/appointments/:id', function (req, res) {
+router.post('/appointments/:id', checkAuth, function (req, res) {
   var hour = req.body.hour;
   var date = req.body.date;
 
@@ -96,7 +96,7 @@ router.post('/appointments/:id', function (req, res) {
 });
 
 // Delete an appointment
-router.delete('/appointments/:id', function (req, res) {
+router.delete('/appointments/:id', checkAuth, function (req, res) {
   Appointment.findById(req.params.id, function (err, appointment) {
     if (err) throw err;
     appointment.remove(function (err, deletedAppt) {

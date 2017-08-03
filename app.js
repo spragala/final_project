@@ -53,7 +53,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Express Validator - from: https://github.com/ctavan/express-validator
+// Express Validator
 app.use(expressValidator({
   errorFormatter: function (param, msg, value) {
     var namespace = param.split('.');
